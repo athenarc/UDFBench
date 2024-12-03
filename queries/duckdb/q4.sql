@@ -1,0 +1,1 @@
+select aggregate_avg('select authors from artifacts','authors') as avg, aggregate_median('select authors from artifacts','authors') as median;

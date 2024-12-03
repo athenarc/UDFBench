@@ -1,0 +1,1 @@
+select * from getstats((select authors from artifacts))xx;

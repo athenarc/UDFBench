@@ -1,0 +1,4 @@
+comment = 'udf functions extractmonth_c'
+default_version = '0.0.1'
+relocatable = true
+module_pathname = '$libdir/extractmonth_c'

@@ -1,0 +1,1 @@
+select t.* from (Select getstats('select authors from artifacts') as t);

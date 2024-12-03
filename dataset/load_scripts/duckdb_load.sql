@@ -1,0 +1,10 @@
+COPY artifacts FROM 'artifacts.csv' (FORMAT 'csv', quote '"', delimiter ',', header 0);
+COPY artifact_abstracts FROM 'artifact_abstracts.csv' (FORMAT 'csv', quote '"', delimiter ',', header 0);
+COPY artifact_authorlists FROM 'artifact_authorlists.csv' (FORMAT 'csv', quote '"', delimiter ',', header 0);
+COPY artifact_authors FROM 'artifact_authors.csv' (FORMAT 'csv', quote '"', delimiter ',', header 0);
+COPY artifact_charges FROM 'artifact_charges.csv' (FORMAT 'csv', quote '"', delimiter ',', header 0);
+COPY artifact_citations FROM 'artifact_citations.csv' (FORMAT 'csv', quote '"', delimiter ',', header 0);
+COPY projects FROM 'projects.csv' (FORMAT 'csv', quote '"', delimiter ',', header 0);
+COPY projects_artifacts FROM 'projects_artifacts.csv' (FORMAT 'csv', quote '"', delimiter ',', header 0);
+COPY project_artifactcount FROM 'project_artifactcount.csv' (FORMAT 'csv', quote '"', delimiter ',', header 0);
+COPY views_stats FROM 'views_stats.csv' (FORMAT 'csv', quote '"', delimiter ',', header 0);

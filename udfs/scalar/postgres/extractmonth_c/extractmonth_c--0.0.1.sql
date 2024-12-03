@@ -1,0 +1,5 @@
+    
+CREATE OR REPLACE FUNCTION extractmonth_c(text) RETURNS int
+     AS 'MODULE_PATHNAME', 'extractmonth_c'
+     LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
+

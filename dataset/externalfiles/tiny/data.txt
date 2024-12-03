@@ -1,0 +1,289 @@
+{"publicationdoi":"355e65625b88::0024d1177f69db7f8cd706d9f14b2099","fundinginfo":"dH2020::ECSEL-RIA::783190"}
+{"publicationdoi":"355e65625b88::009c4ff1345952561dee48eebee02e4d","fundinginfo":"dH2020::IA::723051"}
+{"publicationdoi":"355e65625b88::04880bca4700f17d7d081e245bdf1a6c","fundinginfo":"dFP7::SP1::621353"}
+{"publicationdoi":"355e65625b88::099c96884caa54a3eb1363af643750ca","fundinginfo":"dH2020::BBI-RIA::837527"}
+{"publicationdoi":"355e65625b88::0ab23ea77e290d920418ae9d7a01a46c","fundinginfo":"dFP7::SP1::211548"}
+{"publicationdoi":"355e65625b88::0d70e5687563299bea2250d26d7e2a95","fundinginfo":"dH2020::RIA::870822"}
+{"publicationdoi":"355e65625b88::0e950e2175ab86456ec68df899baa7a9","fundinginfo":"dH2020::RIA::815146"}
+{"publicationdoi":"355e65625b88::0ee0ac013dec1f74e1442bfcc9187940","fundinginfo":"dH2020::CSA::817999"}
+{"publicationdoi":"355e65625b88::0f1468751f7620ac27b4ac9b621906b1","fundinginfo":"dFP7::SP1::285490"}
+{"publicationdoi":"355e65625b88::0f3f13e953192016f1b275ce58f119d4","fundinginfo":"dH2020::ECSEL-IA::826452"}
+{"publicationdoi":"355e65625b88::0f8da977d9edf5c6deb0ce2b064e3b54","fundinginfo":"dFP7::SP1::325268"}
+{"publicationdoi":"355e65625b88::10959b554e283a1b3334682187d4418e","fundinginfo":"dH2020::RIA::755183"}
+{"publicationdoi":"355e65625b88::10959b554e283a1b3334682187d4418e","fundinginfo":"dH2020::RIA::755330"}
+{"publicationdoi":"355e65625b88::11aeb352797a68a282ca4468923d8e51","fundinginfo":"dFP7::SP1::282826"}
+{"publicationdoi":"355e65625b88::11f5dbf8d6d8c58485fc7550ee6c4dc6","fundinginfo":"dH2020::RIA::727476"}
+{"publicationdoi":"355e65625b88::12d4b51c34fd3b9daa68e34406d3c367","fundinginfo":"dH2020::RIA::653676"}
+{"publicationdoi":"355e65625b88::136372dfb8bb5a6dd7eb80e9dc858ae1","fundinginfo":"dH2020::RIA::833496"}
+{"publicationdoi":"355e65625b88::13bd5d6e92833e3b56b878d6cafa93eb","fundinginfo":"dFP7::SP1::284552"}
+{"publicationdoi":"355e65625b88::163971a5a2dc41749026b7c78cad7e83","fundinginfo":"dFP7::SP1::228802"}
+{"publicationdoi":"355e65625b88::177d4d9445f8c13e30054bfe61a2d049","fundinginfo":"dFP7::SP1::284552"}
+{"publicationdoi":"355e65625b88::1805187d795e2d4504ec72e0ea0d0909","fundinginfo":"dFP7::SP1::284552"}
+{"publicationdoi":"355e65625b88::189d789a278420e1f010055609ba7682","fundinginfo":"dFP7::SP1::284552"}
+{"publicationdoi":"355e65625b88::1aa0005dd7c4e9a756ab76ff8d3f35df","fundinginfo":"dH2020::RIA::662320"}
+{"publicationdoi":"355e65625b88::1ad45e948ee5ae1b8345e4a67df67f37","fundinginfo":"dH2020::RIA::700621"}
+{"publicationdoi":"355e65625b88::1cba4c9e3c5066922b072de5cf37180f","fundinginfo":"dH2020::RIA::820895"}
+{"publicationdoi":"355e65625b88::1e2d43adc5bf3d3022be4a062038b1a3","fundinginfo":"dH2020::RIA::814956"}
+{"publicationdoi":"355e65625b88::1f3ac4c07f299cfec62a92a66e5d2ab6","fundinginfo":"dFP7::SP1::325268"}
+{"publicationdoi":"355e65625b88::20ebcd8a9ab507199db220cd740c243d","fundinginfo":"dH2020::RIA::723324"}
+{"publicationdoi":"355e65625b88::217b7b8fdcb1cd635afbf132d818f531","fundinginfo":"dH2020::IA::958339"}
+{"publicationdoi":"355e65625b88::2a03ea08226bbe973df1677e4280a713","fundinginfo":"dH2020::ECSEL-RIA::662189"}
+{"publicationdoi":"355e65625b88::2a69ff551e2e559b6e9fc8f01c4eda1f","fundinginfo":"dH2020::IA::760601"}
+{"publicationdoi":"355e65625b88::2a7a75a777df891806e661ee33e3cfb8","fundinginfo":"dH2020::IA::774094"}
+{"publicationdoi":"355e65625b88::33e79e8d2ead6991b6c22e7570a9af70","fundinginfo":"dH2020::BBI-IA-DEMO::745246"}
+{"publicationdoi":"355e65625b88::37c165dce04d6d7ea353e75843d21b52","fundinginfo":"dFP7::SP1::604391"}
+{"publicationdoi":"355e65625b88::37cdd0b7024ae364b78f6437570fd9cc","fundinginfo":"dH2020::IA::872734"}
+{"publicationdoi":"355e65625b88::37cdd0b7024ae364b78f6437570fd9cc","fundinginfo":"dH2020::IA::957020"}
+{"publicationdoi":"355e65625b88::40853453fd4d7411e50bf9eac549a5f2","fundinginfo":"dH2020::IA::731993"}
+{"publicationdoi":"355e65625b88::42e6cd91544c4e7e4a07c93bb213ec70","fundinginfo":"dFP7::SP1::312583"}
+{"publicationdoi":"355e65625b88::439285d7538fbdbdd06866e8c1408a7b","fundinginfo":"dH2020::IA::723051"}
+{"publicationdoi":"355e65625b88::43ad7d3b88e3beb5663654ee018d1c66","fundinginfo":"dH2020::RIA::763959"}
+{"publicationdoi":"355e65625b88::43cb60fb947ae7db070da2d16116a0a6","fundinginfo":"dH2020::IA::723051"}
+{"publicationdoi":"355e65625b88::4471f74d2dde716bb8d0d2615322aa1d","fundinginfo":"dH2020::CSA::817999"}
+{"publicationdoi":"355e65625b88::450e2ebd06868d2d426f4feadbcec07b","fundinginfo":"dFP7::SP1::228802"}
+{"publicationdoi":"355e65625b88::4716e631e165ef6eb6d53b8083fefecc","fundinginfo":"dH2020::RIA::862170"}
+{"publicationdoi":"355e65625b88::4daa4df777ecee35a9dcbec124291e61","fundinginfo":"dFP7::SP1::285153"}
+{"publicationdoi":"355e65625b88::4f438d261fd4774666de4fe49475b72d","fundinginfo":"dH2020::RIA::945138"}
+{"publicationdoi":"355e65625b88::500b39520faaac00a329cf4becb1dd84","fundinginfo":"dH2020::RIA::833496"}
+{"publicationdoi":"355e65625b88::528a960a8999743cd3df127fa085cec1","fundinginfo":"dH2020::IA::820805"}
+{"publicationdoi":"355e65625b88::54159fe4c60097b61d049f9851dc4990","fundinginfo":"d3599-PPCDT::::PTDC/BIO/72108/2006"}
+{"publicationdoi":"355e65625b88::5458006c8f94b54f990449275df9da3e","fundinginfo":"dH2020::RIA::957331"}
+{"publicationdoi":"355e65625b88::5477c0e058c7518ccb435fae50371c41","fundinginfo":"dFP7::SP1::284552"}
+{"publicationdoi":"355e65625b88::57f37dd9f593d4b8c894bacd978d2310","fundinginfo":"dH2020::CSA::817999"}
+{"publicationdoi":"355e65625b88::58187dfb1b495e92ef4e4acf4c061ce0","fundinginfo":"dFP7::SP2::310892"}
+{"publicationdoi":"355e65625b88::5aa82cd60c2b3b19748948ba34e23db0","fundinginfo":"dH2020::RIA::833704"}
+{"publicationdoi":"355e65625b88::5b4ffe74535eb4f4b3b76b603667722c","fundinginfo":"dH2020::IA::723051"}
+{"publicationdoi":"355e65625b88::5d29d1df5fb46d3047b6ec7da8f2c6f9","fundinginfo":"dH2020::IA::723051"}
+{"publicationdoi":"355e65625b88::5ef8b165a3a9c78b75d26951579538b2","fundinginfo":"dH2020::ECSEL-RIA::662189"}
+{"publicationdoi":"355e65625b88::62128595c327a5cd77339e3817b0f86a","fundinginfo":"dH2020::RIA::820895"}
+{"publicationdoi":"355e65625b88::636cba25c2685a48ad67fe1da0bf8e19","fundinginfo":"dH2020::RIA::820895"}
+{"publicationdoi":"355e65625b88::6449e8d02a8859fbd1bc34d48959ba94","fundinginfo":"dH2020::FCH2-RIA::779577"}
+{"publicationdoi":"355e65625b88::65b7ed8cebd37319c93c6101ea1b3a12","fundinginfo":"dH2020::IA::723051"}
+{"publicationdoi":"355e65625b88::68287cf934efb7903d6b1951b062da33","fundinginfo":"dFP7::SP5::323260"}
+{"publicationdoi":"355e65625b88::69da3142131807a3c1bbe6d8a734f289","fundinginfo":"dH2020::RIA::774629"}
+{"publicationdoi":"355e65625b88::6cecedb7a3cb9849b5b1e938cf6dce72","fundinginfo":"dH2020::RIA::814956"}
+{"publicationdoi":"355e65625b88::6fd17984555f3aa333c7c99fc9aefbb2","fundinginfo":"dFP7::SP1::211548"}
+{"publicationdoi":"355e65625b88::720a6a22431e3e6c6d8c58d21b43fd08","fundinginfo":"dH2020::RIA::777112"}
+{"publicationdoi":"355e65625b88::738aaf80d11c2dba508fb8e79803dd37","fundinginfo":"dH2020::RIA::636909"}
+{"publicationdoi":"355e65625b88::7729035e8610dd1b366d3679326e1a0f","fundinginfo":"dH2020::RIA::653676"}
+{"publicationdoi":"355e65625b88::7bd2d422c6742f43971886fc0947dd61","fundinginfo":"dH2020::RIA::774629"}
+{"publicationdoi":"355e65625b88::7ff019634eb5d43be2409f8429887c3e","fundinginfo":"dH2020::RIA::662320"}
+{"publicationdoi":"355e65625b88::8254b414607e157c6d8975933a9e4b44","fundinginfo":"dH2020::RIA::653676"}
+{"publicationdoi":"355e65625b88::8551e3ead49927ddc464134de35abb6d","fundinginfo":"dH2020::RIA::955387"}
+{"publicationdoi":"355e65625b88::873d20381d4b33c6bcd22e8d1dbc136d","fundinginfo":"dFP7::SP1::312013"}
+{"publicationdoi":"355e65625b88::8c437a89ed82a3a765b2c0e9b6046458","fundinginfo":"dH2020::RIA::661880"}
+{"publicationdoi":"355e65625b88::8c9f69c634ed047a61dcda970dffc3b2","fundinginfo":"dFP7::SP1::211548"}
+{"publicationdoi":"355e65625b88::8f3a28e1396aab91e740ce38011c8ad5","fundinginfo":"dH2020::CSA::869746"}
+{"publicationdoi":"355e65625b88::91de4dd3b1599f15bbdea2846dca2f45","fundinginfo":"dH2020::RIA::833496"}
+{"publicationdoi":"355e65625b88::9398c68188e5c2f55e3d667188adba45","fundinginfo":"dH2020::RIA::768994"}
+{"publicationdoi":"355e65625b88::99eed8a30f66fbd56ccf55ae503052eb","fundinginfo":"dH2020::CSA::730227"}
+{"publicationdoi":"355e65625b88::9b136c97a4c72d9ce58fc5e00825524c","fundinginfo":"dH2020::IA::723051"}
+{"publicationdoi":"355e65625b88::9b5925ba44c8589f99be9bde237cdeae","fundinginfo":"dFP7::SP1::325268"}
+{"publicationdoi":"355e65625b88::9feb9743124f5238683d2280b88969a5","fundinginfo":"dH2020::RIA::768994"}
+{"publicationdoi":"355e65625b88::a2dca90831548bd7a62a50b8e6190fc9","fundinginfo":"dH2020::IA::723051"}
+{"publicationdoi":"355e65625b88::a8a23683ae8ffa9423814bf3e55b6de4","fundinginfo":"dH2020::RIA::700621"}
+{"publicationdoi":"355e65625b88::b0c29e25e15a8ea5fc956f5a0ed01887","fundinginfo":"dFP7::SP1::312013"}
+{"publicationdoi":"355e65625b88::b13973ba838c934dd24c3babc6a9f515","fundinginfo":"dFP7::SP1::325268"}
+{"publicationdoi":"355e65625b88::b24c4f75a572eeac3d17eb6799d8f371","fundinginfo":"dFP7::SP1::284552"}
+{"publicationdoi":"355e65625b88::b2c8150083d5e2d634bcb2fe5ef958f3","fundinginfo":"dH2020::IA::740593"}
+{"publicationdoi":"355e65625b88::b69fc415cdd0ba22d430a16bda9b31b1","fundinginfo":"dH2020::RIA::653676"}
+{"publicationdoi":"355e65625b88::b718981e207d3df20c2b6b980af0288e","fundinginfo":"dH2020::IA::862410"}
+{"publicationdoi":"355e65625b88::b718981e207d3df20c2b6b980af0288e","fundinginfo":"dH2020::CSA::952169"}
+{"publicationdoi":"355e65625b88::b87fcd7dcda2fc87f8d7a2786a6eef60","fundinginfo":"dFP7::SP1::233466"}
+{"publicationdoi":"355e65625b88::bce025366e4b0e771345bef938ae6b4b","fundinginfo":"dH2020::IA::821860"}
+{"publicationdoi":"355e65625b88::bf1fe61fd8332a1211d0eb01ba6584e0","fundinginfo":"dFP7::SP1::325268"}
+{"publicationdoi":"355e65625b88::c02311ac81a0c3f6bb8714bb45520f62","fundinginfo":"dH2020::RIA::696098"}
+{"publicationdoi":"355e65625b88::c0609445532f2d89f9dd9ffcf3b5a556","fundinginfo":"dH2020::CSA::824251"}
+{"publicationdoi":"355e65625b88::c07707a8418f9c2e263e7f951c6538dc","fundinginfo":"dH2020::IA::723051"}
+{"publicationdoi":"355e65625b88::c2424494bdb4e012708469b24c801828","fundinginfo":"dFP7::SP1::233919"}
+{"publicationdoi":"355e65625b88::c54747d81b27a87e5e20f20aeb72ddfc","fundinginfo":"dH2020::RIA::870620"}
+{"publicationdoi":"355e65625b88::c7c02ba38ed881ce7af4653eb55b1b58","fundinginfo":"dH2020::RIA::700621"}
+{"publicationdoi":"355e65625b88::cdfb7ed2eced53ce79686926d2f0136b","fundinginfo":"dH2020::CSA::820892"}
+{"publicationdoi":"355e65625b88::d6ae83f955f65b4c037e88791121d306","fundinginfo":"dH2020::RIA::830929"}
+{"publicationdoi":"355e65625b88::d6c9863f19520b873264b97c4ffdefe2","fundinginfo":"dH2020::RIA::754589"}
+{"publicationdoi":"355e65625b88::dbfa099c61b4a5f86db07e8d303facb8","fundinginfo":"dH2020::IA::731148"}
+{"publicationdoi":"355e65625b88::e2c868a163575fb52b1830462d231aa3","fundinginfo":"dH2020::RIA::814956"}
+{"publicationdoi":"355e65625b88::e2c905e3816c6884f00c12e6b2856d6d","fundinginfo":"dH2020::RIA::774629"}
+{"publicationdoi":"355e65625b88::e77365c61fb9714df52514248f7f4b71","fundinginfo":"d3599-PPCDT::::PTDC/BIO/72108/2006"}
+{"publicationdoi":"355e65625b88::eca1251441d3ee32e3f598544dd514b1","fundinginfo":"dH2020::RIA::755330"}
+{"publicationdoi":"355e65625b88::edb5dcba1ca98d674d8258338e2fc95c","fundinginfo":"dH2020::RIA::815146"}
+{"publicationdoi":"355e65625b88::edb5dcba1ca98d674d8258338e2fc95c","fundinginfo":"dH2020::RIA::958450"}
+{"publicationdoi":"355e65625b88::f318b2e3cc2c4219ec1764eb14126ca4","fundinginfo":"dH2020::RIA::814956"}
+{"publicationdoi":"355e65625b88::f589a129aab5dcfd6a0f64adcfde9e9e","fundinginfo":"dFP7::SP1::284552"}
+{"publicationdoi":"355e65625b88::f7049d491ba1d9c5377e1149f98550e2","fundinginfo":"dH2020::RIA::723661"}
+{"publicationdoi":"355e65625b88::f88cd8cbf468043c0ba1f7ffd7563183","fundinginfo":"dH2020::BBI-RIA::837527"}
+{"publicationdoi":"355e65625b88::faf8f8e4eb0f9611f023a0b7cd523938","fundinginfo":"dH2020::IA::776846"}
+{"publicationdoi":"355e65625b88::fb85370c4f90a23e2a89014f7272daea","fundinginfo":"dH2020::IA::773505"}
+{"publicationdoi":"355e65625b88::fc71811e620027d430a3eeef55dd4910","fundinginfo":"dH2020::RIA::769989"}
+{"publicationdoi":"355e65625b88::fe13c5688b5a0f1c87f4fcab3e7f111c","fundinginfo":"dH2020::IA::731993"}
+{"publicationdoi":"355e65625b88::fed5da2adc76911e08695305dd396b2f","fundinginfo":"dFP7::SP1::211548"}
+{"publicationdoi":"355e65625b88::ffcffbfe1ad5fbc0e4260705fb09a511","fundinginfo":"dFP7::SP1::284552"}
+{"publicationdoi":"355e65625b88::ffd7f3831327fc8bc23cfa04167a79e1","fundinginfo":"dFP7::SP1::233919"}
+{"publicationdoi":"57a035e5b1ae::0f1c55dd7c0ab4bf16997efc4d1310dc","fundinginfo":"dH2020::MSCA-ITN-ETN::813596"}
+{"publicationdoi":"57a035e5b1ae::13ec98c9d63979daaa3bd9435ddfb921","fundinginfo":"dDirectorate for Mathematical & Physical Sciences::Division of Astronomical Sciences::0757888"}
+{"publicationdoi":"57a035e5b1ae::13ec98c9d63979daaa3bd9435ddfb921","fundinginfo":"dFP7::SP2::246678"}
+{"publicationdoi":"57a035e5b1ae::17ed4e1473ec5d8fd74d4ef6f9020ce0","fundinginfo":"dH2020::MSCA-COFUND-DP::713660"}
+{"publicationdoi":"57a035e5b1ae::1a494dabfd600bc1911710df476286b3","fundinginfo":"dH2020::MSCA-ITN-ETN::675440"}
+{"publicationdoi":"57a035e5b1ae::1a494dabfd600bc1911710df476286b3","fundinginfo":"dH2020::ERC::724704"}
+{"publicationdoi":"57a035e5b1ae::1a494dabfd600bc1911710df476286b3","fundinginfo":"dH2020::MSCA-IF-EF-ST::752730"}
+{"publicationdoi":"57a035e5b1ae::1a494dabfd600bc1911710df476286b3","fundinginfo":"dH2020::MSCA-ITN-ETN::765710"}
+{"publicationdoi":"57a035e5b1ae::1b270c3cccab0081e585973780972a7b","fundinginfo":"dH2020::RIA::730897"}
+{"publicationdoi":"57a035e5b1ae::430f8552e6403564a4c3bad4e2971679","fundinginfo":"dH2020::MSCA-IF-GF::795070"}
+{"publicationdoi":"57a035e5b1ae::49a8d6837d80a87626538287f1f9bc0f","fundinginfo":"dH2020::ERC::772264"}
+{"publicationdoi":"57a035e5b1ae::6045c802fba2a1be8894a2294df7f922","fundinginfo":"dDirectorate for Mathematical & Physical Sciences::Division of Materials Research::1708341"}
+{"publicationdoi":"57a035e5b1ae::642ec8c372d1eb411c0667d185ada4f4","fundinginfo":"dNATIONAL EYE INSTITUTE::::5R01EY024941-03"}
+{"publicationdoi":"57a035e5b1ae::642ec8c372d1eb411c0667d185ada4f4","fundinginfo":"dFP7::SP3::291823"}
+{"publicationdoi":"57a035e5b1ae::7bfaf8c402f50453380d48be849b5586","fundinginfo":"dMeitner-Programm::::M 2467"}
+{"publicationdoi":"57a035e5b1ae::81f1f3cd3f84b0627109d1e8d3aefb17","fundinginfo":"dinst-2020::::200017"}
+{"publicationdoi":"57a035e5b1ae::849a5b7d1707e632dd2b3edef8c39935","fundinginfo":"dinst-2020::::200109"}
+{"publicationdoi":"57a035e5b1ae::960b453950dca45c2ab6993c58281595","fundinginfo":"dH2020::MSCA-ITN-ETN::675440"}
+{"publicationdoi":"57a035e5b1ae::960b453950dca45c2ab6993c58281595","fundinginfo":"dH2020::ERC::724704"}
+{"publicationdoi":"57a035e5b1ae::960b453950dca45c2ab6993c58281595","fundinginfo":"dH2020::MSCA-IF-EF-ST::752730"}
+{"publicationdoi":"57a035e5b1ae::960b453950dca45c2ab6993c58281595","fundinginfo":"dH2020::ERC::758316"}
+{"publicationdoi":"57a035e5b1ae::960b453950dca45c2ab6993c58281595","fundinginfo":"dH2020::MSCA-ITN-ETN::765710"}
+{"publicationdoi":"57a035e5b1ae::960b453950dca45c2ab6993c58281595","fundinginfo":"dH2020::RIA::824093"}
+{"publicationdoi":"57a035e5b1ae::960b453950dca45c2ab6993c58281595","fundinginfo":"dH2020::MSCA-COFUND-FP::884104"}
+{"publicationdoi":"57a035e5b1ae::9ae207e5959203c225dbb4fc44cf40e2","fundinginfo":"dNATIONAL INSTITUTE OF GENERAL MEDICAL SCIENCES::::2R01GM061126-09"}
+{"publicationdoi":"57a035e5b1ae::9ae207e5959203c225dbb4fc44cf40e2","fundinginfo":"dNATIONAL INSTITUTE OF DIABETES AND DIGESTIVE AND KIDNEY DISEASES::::5R01DK061671-05"}
+{"publicationdoi":"57a035e5b1ae::9ae207e5959203c225dbb4fc44cf40e2","fundinginfo":"dNATIONAL INSTITUTE OF NEUROLOGICAL DISORDERS AND STROKE::::5R01NS099409-02"}
+{"publicationdoi":"57a035e5b1ae::9ae207e5959203c225dbb4fc44cf40e2","fundinginfo":"dNATIONAL INSTITUTE OF GENERAL MEDICAL SCIENCES::::9R01GM106417-11A1"}
+{"publicationdoi":"57a035e5b1ae::9ae207e5959203c225dbb4fc44cf40e2","fundinginfo":"dNATIONAL INSTITUTE OF GENERAL MEDICAL SCIENCES::::5T32GM107004-07"}
+{"publicationdoi":"57a035e5b1ae::9ae207e5959203c225dbb4fc44cf40e2","fundinginfo":"dNATIONAL HEART, LUNG, AND BLOOD INSTITUTE::::5P01HL107153-04"}
+{"publicationdoi":"57a035e5b1ae::9ae207e5959203c225dbb4fc44cf40e2","fundinginfo":"dNATIONAL INSTITUTE OF GENERAL MEDICAL SCIENCES::::7R01GM116891-04"}
+{"publicationdoi":"57a035e5b1ae::9ae207e5959203c225dbb4fc44cf40e2","fundinginfo":"dNATIONAL INSTITUTE OF GENERAL MEDICAL SCIENCES::::5R43GM123856-02"}
+{"publicationdoi":"57a035e5b1ae::a0ced4456fd7d9de13bc2c3a8ad40083","fundinginfo":"dH2020::MSCA-ITN-ETN::675440"}
+{"publicationdoi":"57a035e5b1ae::a0ced4456fd7d9de13bc2c3a8ad40083","fundinginfo":"dH2020::MSCA-IF-EF-ST::752730"}
+{"publicationdoi":"57a035e5b1ae::a0ced4456fd7d9de13bc2c3a8ad40083","fundinginfo":"dH2020::MSCA-ITN-ETN::765710"}
+{"publicationdoi":"57a035e5b1ae::a36a6d85fd845898ca8f98ceca7f1d19","fundinginfo":"dinst-2020::::200116"}
+{"publicationdoi":"57a035e5b1ae::a4d2afc874f751f94c678246a09a3c15","fundinginfo":"dH2020::MSCA-ITN-ETN::813596"}
+{"publicationdoi":"57a035e5b1ae::af285d519ea89de3046e86f103e560d0","fundinginfo":"dDirectorate for Engineering::Division of Civil, Mechanical & Manufacturing Innovation::1266418"}
+{"publicationdoi":"57a035e5b1ae::ce92714c1f05def8742d7dfcf355e232","fundinginfo":"dMeitner-Programm::::M 2467"}
+{"publicationdoi":"57a035e5b1ae::d27beee35789cc75e349bbe049c73149","fundinginfo":"dH2020::MSCA-ITN-ETN::675440"}
+{"publicationdoi":"57a035e5b1ae::d27beee35789cc75e349bbe049c73149","fundinginfo":"dH2020::ERC::724704"}
+{"publicationdoi":"57a035e5b1ae::d27beee35789cc75e349bbe049c73149","fundinginfo":"dH2020::MSCA-IF-EF-ST::752730"}
+{"publicationdoi":"57a035e5b1ae::d27beee35789cc75e349bbe049c73149","fundinginfo":"dH2020::ERC::758316"}
+{"publicationdoi":"57a035e5b1ae::d27beee35789cc75e349bbe049c73149","fundinginfo":"dH2020::MSCA-ITN-ETN::765710"}
+{"publicationdoi":"57a035e5b1ae::d27beee35789cc75e349bbe049c73149","fundinginfo":"dH2020::RIA::824093"}
+{"publicationdoi":"57a035e5b1ae::d27beee35789cc75e349bbe049c73149","fundinginfo":"dH2020::MSCA-COFUND-FP::884104"}
+{"publicationdoi":"57a035e5b1ae::d69086f504c9963f7616412c3e871f63","fundinginfo":"dDirectorate for Mathematical & Physical Sciences::Division of Chemistry::1412084"}
+{"publicationdoi":"57a035e5b1ae::d69086f504c9963f7616412c3e871f63","fundinginfo":"dNATIONAL INSTITUTE OF BIOMEDICAL IMAGING AND BIOENGINEERING::::4R01EB006124-11"}
+{"publicationdoi":"57a035e5b1ae::d69086f504c9963f7616412c3e871f63","fundinginfo":"dNATIONAL INSTITUTE OF GENERAL MEDICAL SCIENCES::::1R21GM104696-01"}
+{"publicationdoi":"57a035e5b1ae::d69086f504c9963f7616412c3e871f63","fundinginfo":"dNATIONAL INSTITUTE OF ALLERGY AND INFECTIOUS DISEASES::::5R01AI116989-05"}
+{"publicationdoi":"57a035e5b1ae::d69086f504c9963f7616412c3e871f63","fundinginfo":"dNATIONAL CANCER INSTITUTE::::5U54CA119338-04"}
+{"publicationdoi":"57a035e5b1ae::d69086f504c9963f7616412c3e871f63","fundinginfo":"dNATIONAL CANCER INSTITUTE::::5RC2CA148265-02"}
+{"publicationdoi":"57a035e5b1ae::d69086f504c9963f7616412c3e871f63","fundinginfo":"dNATIONAL CANCER INSTITUTE::::5R01CA163256-02"}
+{"publicationdoi":"57a035e5b1ae::deb416501bcb7710371ee6bf3840cf78","fundinginfo":"dSelbständige Publikationen::::PUB 673"}
+{"publicationdoi":"57a035e5b1ae::e32956b4785f6efbe74dfa8c3ba76958","fundinginfo":"dH2020::RIA::726950"}
+{"publicationdoi":"57a035e5b1ae::e32956b4785f6efbe74dfa8c3ba76958","fundinginfo":"dH2020::IA::769975"}
+{"publicationdoi":"CSC_________::1b9e63f76fdd930f33965f112866de49","fundinginfo":"dFP7::SP4::262010"}
+{"publicationdoi":"CSC_________::1e35539d2b56c51bc1b9ec2a51ef9380","fundinginfo":"dFP7::SP1::604391"}
+{"publicationdoi":"CSC_________::2a3f03ec92d8e49d742df50c8344dcc4","fundinginfo":"dPIDDAC::::SFRH/BD/12040/2003"}
+{"publicationdoi":"CSC_________::2a3f03ec92d8e49d742df50c8344dcc4","fundinginfo":"dCareers::Fellowships::117491"}
+{"publicationdoi":"CSC_________::473865766b6f61c8502b7e7e4124c320","fundinginfo":"dFP7::SP3::318617"}
+{"publicationdoi":"CSC_________::473865766b6f61c8502b7e7e4124c320","fundinginfo":"dFP7::SP3::607521"}
+{"publicationdoi":"CSC_________::473865766b6f61c8502b7e7e4124c320","fundinginfo":"dFP7::SP3::612285"}
+{"publicationdoi":"CSC_________::473865766b6f61c8502b7e7e4124c320","fundinginfo":"dH2020::MSCA-RISE::644076"}
+{"publicationdoi":"CSC_________::53fea231dc9b1208a69d39f9db8ecc41","fundinginfo":"dFP7::SP4::262010"}
+{"publicationdoi":"CSC_________::7d8c2219af21816a1f51b713a82a8f6b","fundinginfo":"dFP7::SP2::615146"}
+{"publicationdoi":"CSC_________::8a4d4989070c8120444769a477cce9d4","fundinginfo":"dFP7::SP1::308371"}
+{"publicationdoi":"CSC_________::90f59e098b6caa39a34ad6311e52be50","fundinginfo":"dNATIONAL CANCER INSTITUTE::::5R01CA059045-04"}
+{"publicationdoi":"CSC_________::90f59e098b6caa39a34ad6311e52be50","fundinginfo":"dNATIONAL CANCER INSTITUTE::::2U01CA137088-05"}
+{"publicationdoi":"CSC_________::90f59e098b6caa39a34ad6311e52be50","fundinginfo":"dNATIONAL CANCER INSTITUTE::::5U19CA148065-04"}
+{"publicationdoi":"CSC_________::90f59e098b6caa39a34ad6311e52be50","fundinginfo":"dNATIONAL CANCER INSTITUTE::::5U19CA148107-04"}
+{"publicationdoi":"CSC_________::90f59e098b6caa39a34ad6311e52be50","fundinginfo":"dNATIONAL CANCER INSTITUTE::::3U19CA148112-04S1"}
+{"publicationdoi":"CSC_________::90f59e098b6caa39a34ad6311e52be50","fundinginfo":"dNATIONAL CANCER INSTITUTE::::5U19CA148127-02"}
+{"publicationdoi":"CSC_________::90f59e098b6caa39a34ad6311e52be50","fundinginfo":"dNATIONAL CANCER INSTITUTE::::5U19CA148537-02"}
+{"publicationdoi":"CSC_________::92ac22e4cd7b5ef3657c423835f5b146","fundinginfo":"dFP7::SP2::617951"}
+{"publicationdoi":"CSC_________::92ac22e4cd7b5ef3657c423835f5b146","fundinginfo":"dH2020::ERC::715672"}
+{"publicationdoi":"CSC_________::92ac22e4cd7b5ef3657c423835f5b146","fundinginfo":"dH2020::ERC::759557"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dProject Grants::::1011506"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL HUMAN GENOME RESEARCH INSTITUTE::::1Z01HG000024-09"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL HUMAN GENOME RESEARCH INSTITUTE::::5U01HG004402-02"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE ON AGING::::5R01AG004563-02"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dAGENCY FOR HEALTHCARE RESEARCH AND QUALITY::::5R01HS006516-03"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE ON ALCOHOL ABUSE AND ALCOHOLISM::::1R01AA007535-01A1"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE ON AGING::::2R01AG008861-04"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL LIBRARY OF MEDICINE::::5R01LM010098-08"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE ON AGING::::5R01AG010175-04"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE ON AGING::::N01AG012100-017"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dOFFICE OF THE DIRECTOR, NATIONAL INSTITUTES OF HEALTH::::N01OD012109-003"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE ON DRUG ABUSE::::5R01DA012854-02"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE ON AGING::::5R01AG013196-03"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE ON ALCOHOL ABUSE AND ALCOHOLISM::::1R01AA013320-01A1"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE ON ALCOHOL ABUSE AND ALCOHOLISM::::5R01AA013321-03"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE ON ALCOHOL ABUSE AND ALCOHOLISM::::1R01AA013326-01"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE ON ALCOHOL ABUSE AND ALCOHOLISM::::5R01AA014041-04"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE ON AGING::::1R01AG015928-01"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL CENTER FOR RESEARCH RESOURCES::::2M01RR016500-06"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE ON AGING::::5R01AG020098-05"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL CENTER FOR RESEARCH RESOURCES::::5U54RR020278-04"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE ON AGING::::5R01AG023629-03"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE ON AGING::::5R01AG027058-04"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE ON AGING::::5R01AG028555-02"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL CENTER FOR RESEARCH RESOURCES::::1UL1RR033176-01"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dDIVISION OF EPIDEMIOLOGY AND CLINICAL APPLICATIONS::::N01HC035129-010"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL HEART, LUNG, AND BLOOD INSTITUTE::::5R01HL036310-09"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dEUNICE KENNEDY SHRIVER NATIONAL INSTITUTE OF CHILD HEALTH &HUMAN DEVELOPMENT::::5R01HD042157-03"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL HEART, LUNG, AND BLOOD INSTITUTE::::5R01HL043851-08"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL CANCER INSTITUTE::::5R01CA047988-10"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL CANCER INSTITUTE::::5R01CA049449-02"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL HEART, LUNG, AND BLOOD INSTITUTE::::5R01HL059367-10"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF MENTAL HEALTH::::5R01MH059565-08"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF MENTAL HEALTH::::5R01MH059566-04"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF MENTAL HEALTH::::5R01MH059571-04"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF MENTAL HEALTH::::5R01MH059586-03"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF MENTAL HEALTH::::5R01MH059588-04"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF MENTAL HEALTH::::1R01MH060870-01"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF MENTAL HEALTH::::5R01MH060879-06"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF MENTAL HEALTH::::5R01MH061675-04"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF DIABETES AND DIGESTIVE AND KIDNEY DISEASES::::1R01DK062370-01A1"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF DIABETES AND DIGESTIVE AND KIDNEY DISEASES::::1U01DK062418-01"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF DIABETES AND DIGESTIVE AND KIDNEY DISEASES::::3P30DK063491-04S1"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF MENTAL HEALTH::::1R01MH063706-01"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL CANCER INSTITUTE::::5R01CA065725-07"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF MENTAL HEALTH::::5R01MH067257-03"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL CANCER INSTITUTE::::5R01CA067262-08"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF MENTAL HEALTH::::7U24MH068457-17"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dPopulation and Public Health::::068545"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dPopulation and Public Health::::069224"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL HEART, LUNG, AND BLOOD INSTITUTE::::7U01HL069757-02"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL HEART, LUNG, AND BLOOD INSTITUTE::::5R01HL071981-04"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF DIABETES AND DIGESTIVE AND KIDNEY DISEASES::::2R01DK072193-10"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF DIABETES AND DIGESTIVE AND KIDNEY DISEASES::::5P30DK072488-02"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL HEART, LUNG, AND BLOOD INSTITUTE::::5U01HL072515-06"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dPhysiology in Health and Disease::::072960"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF DIABETES AND DIGESTIVE AND KIDNEY DISEASES::::5R01DK073490-04"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL HEART, LUNG, AND BLOOD INSTITUTE::::5R01HL075366-03"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dGenetics, Genomics and Population Research::::075491"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF DIABETES AND DIGESTIVE AND KIDNEY DISEASES::::5R01DK075681-02"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF DIABETES AND DIGESTIVE AND KIDNEY DISEASES::::3R01DK075787-07S1"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dGenetics, Genomics and Population Research::::076113"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF DIABETES AND DIGESTIVE AND KIDNEY DISEASES::::5K23DK080145-03"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL HEART, LUNG, AND BLOOD INSTITUTE::::1U01HL080295-01"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF MENTAL HEALTH::::1R01MH081800-01"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF MENTAL HEALTH::::1RL1MH083268-01"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dCellular and Molecular Neuroscience::::084183"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL HEART, LUNG, AND BLOOD INSTITUTE::::1U01HL084729-01"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL HEART, LUNG, AND BLOOD INSTITUTE::::5U01HL084756-03"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dDIVISION OF EPIDEMIOLOGY AND CLINICAL APPLICATIONS::::N01HC085079-023"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dDIVISION OF EPIDEMIOLOGY AND CLINICAL APPLICATIONS::::N01HC085080-018"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dDIVISION OF EPIDEMIOLOGY AND CLINICAL APPLICATIONS::::N01HC085081-016"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dDIVISION OF EPIDEMIOLOGY AND CLINICAL APPLICATIONS::::N01HC085082-024"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dDIVISION OF EPIDEMIOLOGY AND CLINICAL APPLICATIONS::::N01HC085083-021"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dDIVISION OF EPIDEMIOLOGY AND CLINICAL APPLICATIONS::::N01HC085084-005"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dDIVISION OF EPIDEMIOLOGY AND CLINICAL APPLICATIONS::::N01HC085085-006"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dDIVISION OF EPIDEMIOLOGY AND CLINICAL APPLICATIONS::::N01HC085086-019"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dGenetics, Genomics and Population Research::::086596"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL HEART, LUNG, AND BLOOD INSTITUTE::::5R01HL086694-11"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL HEART, LUNG, AND BLOOD INSTITUTE::::5R01HL087641-02"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL HEART, LUNG, AND BLOOD INSTITUTE::::5R01HL087647-03"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL HEART, LUNG, AND BLOOD INSTITUTE::::5R01HL087652-03"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL HEART, LUNG, AND BLOOD INSTITUTE::::5R01HL087676-03"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL HEART, LUNG, AND BLOOD INSTITUTE::::5R01HL087679-02"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL HEART, LUNG, AND BLOOD INSTITUTE::::3R01HL087700-02S1"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL CANCER INSTITUTE::::3P01CA087969-03S1"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL HEART, LUNG, AND BLOOD INSTITUTE::::5R01HL088215-02"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dCellular and Molecular Neuroscience::::089061"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dCellular and Molecular Neuroscience::::089062"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dNATIONAL INSTITUTE OF DIABETES AND DIGESTIVE AND KIDNEY DISEASES::::5R01DK089256-03"}
+{"publicationdoi":"CSC_________::a1904a25b3ce00ff343d65ee04dc0741","fundinginfo":"dCellular and Molecular Neuroscience::::090532"}

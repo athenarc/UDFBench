@@ -1,0 +1,12 @@
+apsw==3.40.0.0
+duckdb==1.0.0
+numpy==1.26.4
+pandas==2.2.0
+pyarrow==18.0.0
+python-dateutil==2.8.2
+scikit-learn==1.4.0
+scipy==1.14.1
+nltk==3.8.1
+setuptools
+wheel 
+sphinx

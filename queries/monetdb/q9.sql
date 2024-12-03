@@ -1,0 +1,1 @@
+select aggregate_count(authorpair) from  combinations((select clean(authorlist),2 from (select * from artifact_authorlists where jsoncount(authorlist)<=50) zz));
