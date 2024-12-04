@@ -2,13 +2,13 @@
 
 Welcome to the **UDFBench** repository! This benchmark provides datasets, queries, and UDF implementations to evaluate the performance of User-Defined Functions across multiple database engines.  
 
-Datasets are hosted on **[Zenodo](https://zenodo.org/records/14260428)** for easy access.  
-
 ---
 
 ## Datasets  
 
-For easy deployment one can use the embedeed tiny dataset that is available in the `dataset` folder. For large scale experiments, one needs to download the files from Zenodo.
+  
+The data is hosted in **[Zenodo](https://zenodo.org/records/14260428)** and can be automatically deployed using our scripts (see **[README.txt](README.txt)**).
+For easy deployment one can use the embedeed tiny dataset that is available in the `dataset` folder. 
 
 Three dataset sizes are available to suit different benchmarking needs:  
 
