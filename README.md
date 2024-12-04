@@ -24,9 +24,7 @@ Additionally, external files used in queries are available in the same Zenodo re
 
 ## Queries  
 
-This benchmark includes:  
-
-- **21 queries** implemented for four database engines:  
+UDFBench comprises 21 SQL queries with UDFs implemented in 4 database engines:
   - **MonetDB**  
   - **PostgreSQL**  
   - **DuckDB**  
@@ -38,7 +36,7 @@ You can find the queries organized by engine in the `queries` folder.
 
 ## UDFs  
 
-A comprehensive suite of **42 UDFs** is included, categorized as follows:  
+UDFBench comprises 42 UDFs, categorized as follows:  
 
 - **24 Scalar UDFs**  
 - **4 Aggregate UDFs**  
