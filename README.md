@@ -1,6 +1,6 @@
-# UDF Benchmark  
+# UDFBench
 
-Welcome to the **UDF Benchmark** repository! This benchmark provides datasets, queries, and UDF implementations to evaluate the performance of User-Defined Functions across multiple database engines.  
+Welcome to the **UDFBench** repository! This benchmark provides datasets, queries, and UDF implementations to evaluate the performance of User-Defined Functions across multiple database engines.  
 
 Datasets are hosted on **[Zenodo](https://zenodo.org/records/14260428)** for easy access.  
 
