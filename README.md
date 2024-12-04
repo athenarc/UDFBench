@@ -8,6 +8,8 @@ Datasets are hosted on **[Zenodo](https://zenodo.org/records/14260428)** for eas
 
 ## Datasets  
 
+For easy deployment one can use the embedeed tiny dataset that is available in the `dataset` folder. For large scale experiments, one needs to download the files from Zenodo.
+
 Three dataset sizes are available to suit different benchmarking needs:  
 
 - **Small**  
