@@ -7,14 +7,10 @@ Welcome to the **UDFBench** repository! This benchmark provides datasets, querie
 ## Datasets  
 
   
+UDFBench contains three dataset sizes: small, medium, large.  
 The data is hosted in **[Zenodo](https://zenodo.org/records/14260428)** and can be automatically deployed using our scripts (see **[README.txt](README.txt)**).
-For easy deployment one can use the embedeed tiny dataset that is available in the `dataset` folder. 
+For test deployment, one can use the embedeed tiny dataset that is available in the `dataset` folder. 
 
-Three dataset sizes are available to suit different benchmarking needs:  
-
-- **Small**  
-- **Medium**  
-- **Large**  
 
 Each dataset consists of **10 CSV files** with the same schema:  
 
