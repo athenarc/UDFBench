@@ -62,7 +62,7 @@ UDFBench provides a flexible framework for running experiments on various databa
    - **SSD**  
    - **HDD**  
    - **Memory**  
-5. **Workload Execution**: Execute multiple queries in sequence to simulate real-world workloads.  
+5. **Workload**: Execute multiple queries to experiment with workload execution.  
 6. **Resource Utilization Monitoring**:  
    - Optionally run **[collectl](https://collectl.sourceforge.net/)** to monitor system resource usage (CPU, memory, disk, etc.).  
    - Store the results for post-experiment analysis.  
