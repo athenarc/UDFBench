@@ -190,7 +190,6 @@ For installation and execution instructions, please refer to the **[README.txt](
 
 ### UDF List
 
-# UDF List
 
 | ID   | Name            | Description                                                                                                                                  | Type  | #Inputs | Input Type | #Outputs | Output Type | Pipeline | Blocking | Parallelizable | Side Effect | State | Languages | Cost       |
 |------|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------|-------|---------|------------|----------|-------------|----------|----------|----------------|-------------|-------|-----------|------------|
