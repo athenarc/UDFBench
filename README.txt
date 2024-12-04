@@ -117,10 +117,45 @@ Example command to create/deploy a database:
 The above example  will create a new database (large.db) and load data from the CSV files for the large dataset.
 
 
-.....
 
 
+Run Experiment script parameters:
+To run experiment script (runexperiment.sh), you need to specify several parameters that control the system configuration, experiment settings, resource monitoring. Below is  a description of  each parameter with examples (scenarios) to help you run the experiment.
+Command structure:
+ $PWD'/utilities/runexperiment.sh' $system $database  t$nthreads $cache $disk $workload $collectl [$query1 $query2 .. ]
+Parameter Descriptions:
+1.	System: Select ‘postgres’ for PostgreSQL, ‘monetdb’ for MonetDB, ‘duckdb’ for DuckDB, ‘sqlite3’ for SQLite3, or ‘sqlitevtab’  for SQLite with virtual tables 
+2.	Database :  Select ‘s’ for small, ‘m’ for medium, or ‘l’ for large
+3.	Nthreads: Select ‘0’ to run the experiment with default threads, or select a number for the available cores on your system
+4.	Cache: Select between `cold` (fresh start) or `hot` (preloaded) cache scenarios.
+5.	Disk: Select between ‘ssd’, ‘mem’ (memory), or ‘hdd’ for storage
+6.	Workload: Select ‘true’ to execute multiple queries to experiment with workload execution, else ‘false’ for individual queries
+7.	Collectl: Select ‘true’ to monitor system resource usage (CPU, memory, disk, etc.) ,else ‘false’ to disable
+8.	Query: Select one or more query numbers between 1 and 21.
+Examples: 
+Scenario 1 – Postgres with Large Dataset: The script will run Query 1 on PostgreSQL system, using the large dataset, with default threads, cold cache, on SSD storage, without wordload, and without collectl 
+(e.g.,  $PWD'/utilities/runexperiment.sh' postgres l  t0 cold ssd false false 1)
 
+Scenario 2 – Monetdb with Parallelism: The script will run Query 2 on MonetDB system,  using the medium dataset, with 2 thread, cold cache, on SSD storage, without wordload, and with collectl 
+(e.g.,  $PWD'/utilities/runexperiment.sh' monetdb m t2 cold ssd false true 2)
+
+Scenario 3 – DuckDB with Cache State: The script will run Queries 10-11 on the DuckDB system,  using the small dataset, with 1 thread, hot cache, on SSD storage, without wordload, and without collectl 
+(e.g.,  $PWD'/utilities/runexperiment.sh' duckdb s t1  hot ssd false false 10 11)
+
+Scenario 4a – Sqlite with Storage: The script will run Query 1 on SQLite system,  using the large dataset, with default thread, hot cache, on MEM storage, without wordload, and without collectl 
+(e.g.,  $PWD'/utilities/runexperiment.sh' sqlite3 l t0  hot mem false false 1)
+
+Scenario 4b – Sqlitevtab with Storage: The script will run Query 2 on SQLitevtab system,  using the large dataset, with default thread, cold cache, on HDD storage, without wordload, and with collectl 
+(e.g.,  $PWD'/utilities/runexperiment.sh' sqlitevtab l t0  cold hdd false true 2)
+
+Scenario 5 – Postgres with Workload: The script will run Queries 1 -5 on PostgreSQL system,  using the medium dataset, with default threads, cold cache, on SSD storage, with wordload, and without collectl 
+(e.g.,  $PWD'/utilities/runexperiment.sh' postgres m  t0 cold ssd true false 1 2 3 4 5)
+
+Scenario 6 – Monetdb with Resources: The script will run Queries 1- 7 on MonetDB system,  using the large dataset, with default threads, cold cache, on SSD storage, without wordload, and with collectl 
+(e.g.,  $PWD'/utilities/runexperiment.sh' monetdb l  t0 cold ssd false true 1 2 3 4 5 6 7)
+
+
+.......
 
 # 3. Install Required Ubuntu Packages:
 "./utilities/README.Ubuntu.sh"
