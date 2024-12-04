@@ -18,7 +18,7 @@ Three dataset sizes are available to suit different benchmarking needs:
 
 Each dataset consists of **10 CSV files** with the same schema:  
 
-![Dataset Schema](https://github.com/johnfouf/udfbench/figs/schema.png)  
+![Dataset Schema](https://github.com/johnfouf/udfbench/blob/main/figs/schema.png)  
 
 Additionally, external files used in queries are available in the same Zenodo repository.  
 
