@@ -142,7 +142,7 @@ Example Usage:
 - Download the necessary datasets, install the systems, create and deploy the databases, and run the experiment across all systems:
 ./exec.sh ssd yes yes yes yes postgres monetdb duckdb sqlite3
 
-- Run this once to download all necessary datasets:
+- Run this once to download datasets from zenodo:
 ./exec.sh ssd no no no yes 
 
 - Install all systems, create and deploy the databases:
