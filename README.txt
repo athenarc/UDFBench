@@ -145,13 +145,13 @@ Example Usage:
 - Run this once to download datasets from zenodo:
 ./exec.sh ssd no no no yes 
 
-- Install all systems, create and deploy the databases:
+- Install database engines, create, deploy and load the databases:
 ./exec.sh ssd no yes yes no postgres monetdb duckdb sqlite3
 
-- Create and deploy the databases to an existing system:
+- Create and deploy the databases to pre-installed data engines:
 ./exec.sh ssd no yes no no  postgres monetdb duckdb sqlite3
 
-- Run the experiment across all systems:
+- Run the whole benchmark across all engines:
 ./exec.sh ssd yes no no no postgres monetdb duckdb sqlite3
 
 
