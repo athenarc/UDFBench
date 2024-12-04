@@ -69,7 +69,15 @@ UDFBench provides a flexible framework for running experiments on various databa
 
 These customizable settings enable users to tailor experiments to specific performance scenarios, providing valuable insights into UDF and query performance.  
 
-## Query Descriptions  
+##  How to Use  
+
+For installation and execution instructions, please refer to the **[README.txt](README.txt)** file in the repository.  
+
+---
+
+## Detailed info for queries and UDFs
+
+### Query Descriptions  
 
 **Q1 - Date Extraction with Scalar UDFs**  
 - **Description**: Extract the year, month, and day from a date using three scalar UDFs.  
@@ -179,11 +187,8 @@ These customizable settings enable users to tailor experiments to specific perfo
 - **Input**: 1 file.  
 - **Output**: Updated table.  
 
-##  How to Use  
+--- 
 
-For installation and execution instructions, please refer to the **[README.txt](README.txt)** file in the repository.  
-
----
 
 
 
