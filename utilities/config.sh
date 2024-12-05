@@ -2,7 +2,7 @@
 export RESULTSPATH=$PWD'/results'
 export SQLITEPATH=$PWD'/queries/sqlite/exec.py'
 export PYTHONEXEC='python3'
-export SQLITEVTABPATH==$PWD'/queries/sqlitevtab/exec.py'
+export SQLITEVTABPATH=$PWD'/queries/sqlitevtab/mexec.py'
 export SCRIPTPATH=$SQLITEVTABPATH
 export PYPYPATH='python3'
 export SQLITEDBSSDPATH=$PWD'/databases/sqlite'
