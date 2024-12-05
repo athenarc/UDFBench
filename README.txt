@@ -84,12 +84,57 @@ Variables in the Configuration file for DuckDB:
 7.	DUCKDBCLI: Path to the DuckDB CLI (Command Line Interface) executable. The CLI is used to connect to the DuckDB  databases directly from the terminal (e.g., export DUCKDBCLI=$PWD'/databases/duckdb/cli/duckdb').
 
 
+# 3. Install Required Ubuntu Packages:
+"./utilities/README.Ubuntu.sh"
+
+# 4. Install Python3 Dependencies:
+"$PYTHONEXEC" -m pip install -r $PWD'/utilities/requirements.txt --upgrade  --user
+
+# 5. Install, Set Up, and Run Experiment on Database Engines: : PostgreSQL, MonetDB, DuckDB, SQLite
+The exec.sh script handles the download, installation, deployment, and execution of experiments for the following database systems: PostgreSQL, MonetDB, DuckDB, and SQLite. It also allows you to select parameters that are compatible with your system.
+
+Command structure:
+./exec.sh <disk> <runexp> <deploy> <download > < install > <system> [ <system2> ..]
+
+Parameter Descriptions:
+1.	Disk: Select a storage option:  ‘ssd’ ,  ‘mem’ (in-memory), or ‘hdd’  
+
+2.	Runexp: Select ‘yes’ to run the experiment, or ‘no’ to skip it.
+
+3.	Deploy: Select ‘yes’ to deploy the databases, or ‘no’ to skip deployment.
+
+4.	Download: Select ‘yes’ to download the datasets from Zenodo, or ‘no’ to skip downloading.
+
+5.	Install: Select ‘yes’ to install the required database engines, or ‘no’ to skip installation.
+
+6.	System:  Select ‘postgres’ for PostgreSQL, ‘monetdb’ for MonetDB, ‘duckdb’ for DuckDB, or ‘sqlite3’ for SQLite3 (including SQLite with virtual tables) to install, deploy, or run the experiment. You can choose one or more systems from the list.
+
+Example Usage:
+- Download the necessary datasets, install the systems, create and deploy the databases, and run the experiment across all systems:
+./exec.sh ssd yes yes yes yes postgres monetdb duckdb sqlite3
+
+- Run this once to download datasets from zenodo:
+./exec.sh ssd no no yes no 
+
+- Install database engines, create, deploy and load the databases:
+./exec.sh ssd no yes no yes postgres monetdb duckdb sqlite3
+
+- Create and deploy the databases to pre-installed data engines:
+./exec.sh ssd no yes no no  postgres monetdb duckdb sqlite3
+
+- Run the whole benchmark across all engines:
+./exec.sh ssd yes no no no postgres monetdb duckdb sqlite3
 
 
-Run Experiment script parameters:
-To run experiment script (runexperiment.sh), you need to specify several parameters that control the system configuration, experiment settings, resource monitoring. Below is  a description of  each parameter with examples (scenarios) to help you run the experiment.
+# 6. Execution of custom experiments 
+
+While exec.sh script supports execution of the whole benchmark in default setups, 
+utilities/runexperiment.sh allows for more fine tuned experimentation as the user may select specific queries, engines and setups to instantiate custom experiments with the UDFBench.   
+To run experiment script (runexperiment.sh),  several parameters that control the system configuration, experiment settings, resource monitoring should be specified. Below is  a description of  each parameter with examples (scenarios) to help you run the experiment.
+
 Command structure:
  $PWD'/utilities/runexperiment.sh' $system $database  t$nthreads $cache $disk $workload $collectl [$query1 $query2 .. ]
+
 Parameter Descriptions:
 1.	System: Select ‘postgres’ for PostgreSQL, ‘monetdb’ for MonetDB, ‘duckdb’ for DuckDB, ‘sqlite3’ for SQLite3, or ‘sqlitevtab’  for SQLite with virtual tables 
 2.	Database :  Select ‘s’ for small, ‘m’ for medium, or ‘l’ for large
@@ -99,6 +144,7 @@ Parameter Descriptions:
 6.	Workload: Select ‘true’ to execute multiple queries to experiment with workload execution, else ‘false’ for individual queries
 7.	Collectl: Select ‘true’ to monitor system resource usage (CPU, memory, disk, etc.) ,else ‘false’ to disable
 8.	Query: Select one or more query numbers between 1 and 21.
+
 Examples: 
 Scenario 1 – Postgres with Large Dataset: The script will run Query 1 on PostgreSQL system, using the large dataset, with default threads, cold cache, on SSD storage, without wordload, and without collectl 
 (e.g.,  $PWD'/utilities/runexperiment.sh' postgres l  t0 cold ssd false false 1)
@@ -120,43 +166,5 @@ Scenario 5 – Postgres with Workload: The script will run Queries 1 -5 on Postg
 
 Scenario 6 – Monetdb with Resources: The script will run Queries 1- 7 on MonetDB system,  using the large dataset, with default threads, cold cache, on SSD storage, without wordload, and with collectl 
 (e.g.,  $PWD'/utilities/runexperiment.sh' monetdb l  t0 cold ssd false true 1 2 3 4 5 6 7)
-
-
-.......
-
-# 3. Install Required Ubuntu Packages:
-"./utilities/README.Ubuntu.sh"
-
-# 4. Install Python3 Dependencies:
-"$PYTHONEXEC" -m pip install -r $PWD'/utilities/requirements.txt --upgrade  --user
-
-# Install DuckDB, PostGreSQL,Sqlite and Monetdb System
-
-<!-- ./exec.sh <disk> <runexp> <deploy> <install> <download> <system> [ <system2> ..]
-    for <disk> options are ssh, hdd or mem  (Choose the disk type)
-    for <runexp> options are yes or no (Run the experiment or not)
-    for <deploy> options are yes or no (Deploy the databases or not)
-    for <install> options are yes or no (Install dependencies or not)
-    for <download> options are yes or no  (Download  datasets or not)
-    for <system> options are postgres, monetdb and duckdb  (Choose one or more systems)-->
-
-Example Usage:
-- Download the necessary datasets, install the systems, create and deploy the databases, and run the experiment across all systems:
-./exec.sh ssd yes yes yes yes postgres monetdb duckdb sqlite3
-
-- Run this once to download datasets from zenodo:
-./exec.sh ssd no no no yes 
-
-- Install database engines, create, deploy and load the databases:
-./exec.sh ssd no yes yes no postgres monetdb duckdb sqlite3
-
-- Create and deploy the databases to pre-installed data engines:
-./exec.sh ssd no yes no no  postgres monetdb duckdb sqlite3
-
-- Run the whole benchmark across all engines:
-./exec.sh ssd yes no no no postgres monetdb duckdb sqlite3
-
-
-
 
 
