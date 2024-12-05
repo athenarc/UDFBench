@@ -1,2 +1,2 @@
 
-outputs 'output.csv' 'csv' select * from fileparse('arxiv.xml','xml') union all select * from fileparse('query2json.txt','json'); 
+output 'output.csv' 'csv' select * from file('arxiv.xml','xml') union all select * from file('query2json.txt','json'); 

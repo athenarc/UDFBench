@@ -64,9 +64,13 @@ Variables in the Configuration file for SQLite / SQLitevtab:
 
 8.	SQLITEAGGRS: Path to the Aggregate UDFs for SQLite (e.g., export SQLITEAGGRS=$PWD'/udfs/aggregate/sqlite').
 
-9.	SQLITEQUERIES: Path to the SQLite SQL query files (e.g., export SQLITEQUERIES=$PWD'/queries/sqlite').
+9.	SQLITEVTABTABLES: Path to the Table UDFs for SQLite virtual table (VTAB)  (e.g., export SQLITEVTABTABLES=$PWD'/udfs/table/sqlitevtab').
 
-10.	SQLITEVTABQUERIES: Path to a custom SQLite virtual table (VTAB) SQL query files (e.g., export SQLITEVTABQUERIES=$PWD'/queries/sqlitevtab').
+10.	SQLITEQUERIES: Path to the SQLite SQL query files (e.g., export SQLITEQUERIES=$PWD'/queries/sqlite').
+
+11.	SQLITEVTABQUERIES: Path to a custom SQLite virtual table (VTAB) SQL query files (e.g., export SQLITEVTABQUERIES=$PWD'/queries/sqlitevtab').
+
+12.	SQLITEVTABFUNCTIONS: Path to the UDFs for SQLite virtual table (VTAB)  (e.g., export SQLITEVTABFUNCTIONS=$PWD'/queries/sqlitevtab/functions').
 
 Variables in the Configuration file for DuckDB:
 1.	DUCKDBEXEC: Path to the DuckDB executable (e.g., export  DUCKDBEXEC =$PWD'queries/duckdb/exec.py’)

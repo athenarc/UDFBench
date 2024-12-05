@@ -14,7 +14,7 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 ### Classic stream iterator
 registered=True
 
-class outputs(vtbase.VT):
+class kmeans_iterative(vtbase.VT):
   def VTiter(self, *parsedArgs, **envars):
     largs, dictargs = self.full_parse(parsedArgs)
     self.nonames=True
@@ -29,8 +29,7 @@ class outputs(vtbase.VT):
     query=dictargs['query']
     cur = envars['db'].cursor()
 
-
-    def recursive_kmeans_per_type(df,group_by_column,kmeans_column, ids_column,num_clusters, max_iterations=30, tolerance=1e-3):
+    def iter_kmeans_per_type(df,group_by_column, kmeans_column, ids_column,num_clusters, max_iterations=10, tolerance=1e-4):
         types = df[group_by_column].unique()
 
         for type_ in types:
@@ -40,24 +39,23 @@ class outputs(vtbase.VT):
             data_subset = type_df[kmeans_column].values.reshape(-1, 1)
             ids_subset = type_df[ids_column].values
 
-            cluster_labels = recursive_kmeans(data_subset, num_clusters, max_iterations, tolerance, None, 10)
+            kmeans = KMeans(n_clusters=num_clusters, max_iter=max_iterations, tol=tolerance)
+            prev_centroids = None
+            iteration = 0
+            while True:
+                kmeans.fit(data_subset)
+                centroids = kmeans.cluster_centers_
+                if prev_centroids is not None and np.allclose(prev_centroids, centroids, atol=tolerance):
+                    break
+                prev_centroids = centroids.copy()
+                iteration += 1
+                if iteration >= max_iterations:
+                    break
+
+            cluster_labels = kmeans.labels_
+
             for cluster_id, id, data_point in zip(cluster_labels, ids_subset, data_subset.flatten()):
                 yield (cluster_id, id, type_, float(data_point))
-
-
-    def recursive_kmeans(data, num_clusters, max_iterations, tolerance, prev_centroids=None, max_recursive_calls=10):
-
-        kmeans = KMeans(n_clusters=num_clusters, max_iter=max_iterations, tol=tolerance)
-        kmeans.fit(data)
-        centroids = kmeans.cluster_centers_
-
-        if prev_centroids is not None and np.allclose(prev_centroids, centroids, atol=tolerance):
-            return kmeans.labels_
-
-        if max_recursive_calls > 0:
-            return recursive_kmeans(data, num_clusters, max_iterations, tolerance, centroids, max_recursive_calls - 1)
-        else:
-            return kmeans.labels_
 
 
     try:
@@ -66,7 +64,7 @@ class outputs(vtbase.VT):
         names = [x[0] for x in sch]
         df = pd.DataFrame(data)
         header=0
-        for row in recursive_kmeans_per_type(df,names.index(group_by_column),names.index(kmeans_column), names.index(ids_column),num_clusters, 10, 1e-3):
+        for row in iter_kmeans_per_type(df,names.index(group_by_column),names.index(kmeans_column), names.index(ids_column),num_clusters, 10, 1e-3):
             if header==0:
                 yield ('c'+str(d) for x,d in enumerate(row))
                 header=1
@@ -77,6 +75,8 @@ class outputs(vtbase.VT):
         return None
 
 
+
 def Source():
-    return vtbase.VTGenerator(outputs)
+    return vtbase.VTGenerator(kmeans_iterative)
+
 

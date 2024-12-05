@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 import pandas as pd
 
 registered=True
-class fileparse(vtbase.VT):
+class file(vtbase.VT):
   def VTiter(self, *parsedArgs, **envars):
     largs, dictargs = self.full_parse(parsedArgs)
 
@@ -105,6 +105,6 @@ class fileparse(vtbase.VT):
         raise ValueError(f"Unsupported file format: {file_type}")
 
 def Source():
-    return vtbase.VTGenerator(fileparse)
+    return vtbase.VTGenerator(file)
 
 

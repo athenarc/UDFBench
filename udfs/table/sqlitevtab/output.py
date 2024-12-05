@@ -11,7 +11,7 @@ import pandas as pd
 ### Classic stream iterator
 registered=True
 
-class outputs(vtbase.VT):
+class output(vtbase.VT):
   def VTiter(self, *parsedArgs, **envars):
     largs, dictargs = self.full_parse(parsedArgs)
 
@@ -71,4 +71,4 @@ class outputs(vtbase.VT):
 
 
 def Source():
-    return vtbase.VTGenerator(outputs)
+    return vtbase.VTGenerator(output)

@@ -467,3 +467,197 @@ class Table:
         median_val = np.NaN if table['authors'].isnull().all() else np.nanmedian(table.authors)
         return ({'avg':avg_val,'median':median_val},)
 
+
+# Q16 UDFs - Fused
+
+
+    def combinations_fused(self,fundingstring:str,jval:str,N:int):
+        import json
+        import itertools
+        from itertools import combinations
+        def jcombinations(jval,N=2):
+            if jval:
+                try:
+                    name_list = json.loads(str(jval))
+                    for name_per in itertools.combinations(name_list, int(N)):
+                        yield json.dumps([name_per_i for name_per_i in name_per])
+                except:
+                    yield('[]') 
+            else:
+                yield None 
+        
+        def extractfunder(project):
+            if project:
+                try:
+                    if '::' in project:
+                        return project.split("::")[0]
+                    else:
+                        return None
+                except:
+                    return None
+            else:
+                return 
+                
+        def extractclass(project):
+            if project:
+                try:
+                    return project.split("::")[1]
+                except:
+                    return None
+            else:
+                return None
+
+                
+        def extractid(project):
+            if project:
+                try:
+                    return project.split("::")[2]
+                except:
+                    return None
+            else:
+                return None
+
+        def extractfundingstring(project):
+            try:
+                listproject = project.split("::")
+                return  listproject[0], listproject[1], listproject[2]
+            except:
+                return None,None,None
+           
+    
+        def removeshortwords(name):
+            return " ".join([word for word in name.split(' ') if len(word) > 2])
+        
+        def sortname(name):
+            return " ".join(sorted(name.split(' ')))
+
+
+        def jfusedudfs(jval):
+            if jval:
+                try:
+                    jval = json.loads(jval)
+                    jval = [name.lower() for name in jval]
+                    jval = [removeshortwords(name) for name in jval]
+                    jval = [sortname(name) for name in jval]
+                    jval = sorted(jval)
+
+                    return json.dumps(jval)
+                except:
+                    return "[]"
+            else:
+                return None
+
+        # reslist = []
+        result = []
+        for _fundingstring, arg1, arg2 in zip(fundingstring, jval, N):
+            (funder, _class, projectid) = extractfundingstring(str(_fundingstring))
+            if arg1.is_valid:
+                sub_result = []
+                for y in jcombinations(jfusedudfs(str(arg1)), arg2.as_py()):
+                    sub_result.append({
+                        "funder": funder,
+                        "fclass": _class,
+                        "projectid": projectid,
+                        "authorpair": y
+                    })
+                result.append(sub_result)
+            else:
+                result.append([{
+                    "funder": funder,
+                    "fclass": _class,
+                    "projectid": projectid,
+                    "authorpair": None
+                }])
+        return result
+   
+
+    def q16b_fused(self,subquery:str):
+        import pandas as pd
+        import numpy as np
+        from collections import defaultdict
+
+        def cleandate(pubdate):
+            if pubdate:
+                try:
+                    if "-" in pubdate:
+                        splitnum = pubdate.count('-')
+                        pubdate_split = pubdate.split("-")
+                        if splitnum ==1:
+                            return pubdate_split[0] + "/" + pubdate_split[1] + "/" + "01"
+                        elif splitnum ==2:
+                            return pubdate_split[0] + "/" + pubdate_split[1] + "/" + pubdate_split[2]
+                        else:
+                            return None
+                    elif "/" in pubdate:
+                        splitnum = pubdate.count('/')
+                        pubdate_split = pubdate.split("/")
+                        if splitnum ==1:
+                            return pubdate_split[0] + "/" + pubdate_split[1] + "/" + "01"
+                        elif splitnum ==2:
+                            return pubdate_split[0] + "-" + pubdate_split[1] + "-" + pubdate_split[2]
+                        else:
+                            return None
+                    else:
+                        return None
+                except:
+                    return None
+            else:
+                return None
+                
+        try:
+
+            cur  = self.con
+
+            rows = cur.sql(f"{str(subquery[0])};").fetchall()
+            results = defaultdict(lambda: {'authors_during': None, 'authors_before': None, 'authors_after': None})
+
+
+            for row in rows:
+                invalid_val = True 
+                funder = row[0]
+                _class = row[1]
+                projectid = row[2]
+                
+                pstartcleaned = cleandate(row[3])
+                pendcleaned = cleandate(row[4])
+                pubdatecleaned = cleandate(row[5])
+                key = (funder, _class, projectid)
+
+                if key not in results:
+                    results[key]['authors_during'] = None
+                    results[key]['authors_before'] = None
+                    results[key]['authors_after'] = None
+
+                if  pubdatecleaned is None:
+                    continue
+
+
+                if pstartcleaned and pendcleaned:
+                    if results[key]['authors_during'] is None:
+                        results[key]['authors_during'] = 1 if pstartcleaned <= pubdatecleaned <= pendcleaned else None
+                    else:
+                        results[key]['authors_during'] += 1 if pstartcleaned <= pubdatecleaned <= pendcleaned else 0
+
+                if pstartcleaned:
+                    if results[key]['authors_before'] is None:
+                        results[key]['authors_before'] = 1 if pubdatecleaned < pstartcleaned else None
+                    else:
+                        results[key]['authors_before'] += 1 if pubdatecleaned < pstartcleaned else 0
+
+                if pendcleaned:
+                    if results[key]['authors_after'] is None:
+                        results[key]['authors_after'] = 1 if pubdatecleaned > pendcleaned else None
+
+                    else:
+                        results[key]['authors_after'] += 1 if pubdatecleaned > pendcleaned else 0
+    
+            res= [
+                    [{'funder':funder, 'fclass':_class, 'projectid':projectid, 'authors_during':counts['authors_during'], 'authors_before':counts['authors_before'], 'authors_after':counts['authors_after']} 
+                    for (funder, _class, projectid), counts in results.items()
+                ]]
+
+            return  res
+
+     
+        except Exception as e:
+            return [(None, None, None, None, None, None)]

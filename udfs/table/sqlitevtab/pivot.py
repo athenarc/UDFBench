@@ -13,7 +13,7 @@ from sklearn.cluster import KMeans
 ### Classic stream iterator
 registered=True
 
-class outputs(vtbase.VT):
+class pivot(vtbase.VT):
   def VTiter(self, *parsedArgs, **envars):
     largs, dictargs = self.full_parse(parsedArgs)
     self.nonames=True
@@ -39,16 +39,12 @@ class outputs(vtbase.VT):
             aggfunc=aggregate_function,
             fill_value=0
         ).reset_index()
-        # pivoted_df = pivoted_df.sort_index(axis=1)
-        # print(pivoted_df)
-        
+    
         for row in pivoted_df.itertuples(index=False):
             yield tuple(row)
-        # for _,row in pivoted_df.iterrows():
-        #     yield tuple(row.values)
-
+     
     except :
         return None
 
 def Source():
-    return vtbase.VTGenerator(outputs)
+    return vtbase.VTGenerator(pivot)

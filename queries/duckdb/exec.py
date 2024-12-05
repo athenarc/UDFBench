@@ -90,6 +90,12 @@ def createfunctions(con,UDFs,UDAFs,UDTFs):
 
         con.create_function('combinations', UDTFs.combinations, [VARCHAR,BIGINT] ,con.list_type(VARCHAR),type='arrow')
 
+        comb_type = con.struct_type({'authorpair': VARCHAR,'fclass': VARCHAR,'funder': VARCHAR,'projectid': VARCHAR})
+        authors_sum = con.struct_type({'authors_after': DOUBLE,'authors_before': DOUBLE, 'authors_during': DOUBLE, 'fclass': VARCHAR,'funder': VARCHAR,'projectid': VARCHAR})
+
+        con.create_function('combinations_fused', UDTFs.combinations_fused, [VARCHAR,VARCHAR,BIGINT] ,con.list_type(comb_type),type='arrow')
+        con.create_function('q16b_fused', UDTFs.q16b_fused, [VARCHAR] ,con.list_type(authors_sum),type='arrow')
+
 
         extractkeys_type = con.struct_type({'key1': VARCHAR, 'key2': VARCHAR})
         con.create_function('extractkeys', UDTFs.extractkeys, [VARCHAR,VARCHAR,VARCHAR], extractkeys_type, type='arrow')

@@ -24,7 +24,6 @@ if [ ! -d "$RESULTSPATH" ]; then
     mkdir -p "$RESULTSPATH"
     mkdir -p "$RESULTSPATH/script"
     mkdir -p "$RESULTSPATH/collectl"
-    touch "$RESULTSPATH/collectl/collectls.db"
 fi
 
 DATAB="tiny"
@@ -78,27 +77,85 @@ shift
 WORKLOAD="$1"
 shift
 
-
 COLLECTL="$1"
 shift
 
-echo "$NTHREADS" "$DATAB" "$CACHE" "$DISK" "$WORKLOAD"
 if [ "$SYSTEM" = "monetdb" ]  &&  [ $NTHREADS -gt  0 ];then
-            DEFAULT_THREADS=$("$MONETDBBINPATH/monetdb -p $MONETDBPORT get nthreads "$DATAB"" | awk 'NR==2 {print $4}')
-            # echo $DEFAULT_THREADS
+            DEFAULT_THREADS=$($MONETDBBINPATH/monetdb -p $MONETDBPORT get nthreads "$DATAB" | awk 'NR==2 {print $4}')
             $MONETDBBINPATH/monetdb -p $MONETDBPORT  stop "$DATAB"
             $MONETDBBINPATH/monetdb -p $MONETDBPORT  set nthreads=$NTHREADS "$DATAB"
             $MONETDBBINPATH/monetdb -p $MONETDBPORT  start "$DATAB"
 fi
+
+if [ "$SYSTEM" = "sqlitevtab" ]; then
+    cp $SQLITESCALAR/*.py $SQLITEVTABFUNCTIONS/row
+    cp $SQLITEAGGRS/*.py $SQLITEVTABFUNCTIONS/aggregate
+    cp $SQLITEVTABTABLES/*.py $SQLITEVTABFUNCTIONS/vtable
+
+fi
 if  [ $WORKLOAD = "true" ]; then
-# TODO
-    for query_file in "$@"; do
-        sed -i.bak -e "s|[^']*\.txt'|"$EXTERNALPATH/$DATAB"/&|g" \
-        -e "s|[^']*\.csv'|"$EXTERNALPATH/$DATAB"/&|g" -e "s|[^']*\.xml'|"$EXTERNALPATH/$DATAB"/&|g" -e "s|[^']*\.json'|"$EXTERNALPATH/$DATAB"/&|g" "$POSTGRESQUERIES/q$query_file.sql"
-        $PSQLPATH -U $PSQLUSER -p $PSQLPORT "$DATAB" -f "$POSTGRESQUERIES/q$query_file.sql"  > "$RESULTSPATH/$filename".txt &
-        mv "$POSTGRESQUERIES/q$query_file.sql.bak" "$POSTGRESQUERIES/q$query_file.sql"
-    done
-    wait
+    filename="$SYSTEM"-"$DATABASE"-workload_"$(echo "$@" | tr ' ' '_')"-t"$NTHREADS"-"$CACHE"-"$DISK"  
+
+    case "$SYSTEM" in
+        postgres)
+
+            :
+            ;;
+        monetdb)
+            for query_file in "$@"; do
+                sed -i.bak -e "s|[^']*\.txt'|"$EXTERNALPATH/$DATAB"/&|g" \
+                -e "s|[^']*\.csv'|"$EXTERNALPATH/$DATAB"/&|g" -e "s|[^']*\.xml'|"$EXTERNALPATH/$DATAB"/&|g" -e "s|[^']*\.json'|"$EXTERNALPATH/$DATAB"/&|g" "$MONETDBQUERIES/q$query_file.sql"
+    
+            done
+            
+            start_t=$(date +%s%3N)
+
+            if [ $COLLECTL = "true" ]; then 
+                collectl -f "$RESULTSPATH/collectl/$filename" -scdnm -F0  -i.1 &
+                COLLECTL_PID=$!
+            fi
+
+            query_pids=()
+
+            for query_file in "$@"; do
+                $MONETDBPATH -p $MONETDBPORT -d "$DATAB" -f trash -H -t performance  "$MONETDBQUERIES/q$query_file.sql";  >> "$RESULTSPATH/$filename.txt" &
+                query_pids+=($!)
+            done
+
+
+            for pid in "${query_pids[@]}"; do
+                wait $pid  
+            done          
+            if [ $COLLECTL = "true" ]; then 
+                kill $COLLECTL_PID
+            fi
+        
+            end_t=$(date +%s%3N)
+            elapsed_time=$((end_t - start_t))
+            echo "Workload Monetdb time: ${elapsed_time} milliseconds"
+
+            for query_file in "$@"; do
+            
+                mv "$MONETDBQUERIES/q$query_file.sql.bak" "$MONETDBQUERIES/q$query_file.sql"
+            done
+            ;;
+        sqlite3)
+            :
+            ;;
+        sqlitevtab)
+            :
+            ;;
+        duckdb)
+            :
+            ;;
+        *)
+            echo "Unsupported system: $SYSTEM"
+            exit 1
+            ;;
+    esac
+        if [ $COLLECTL = "true" ]; then 
+            collectl -p $RESULTSPATH/collectl/$filename*.gz -scdnm -P  > $RESULTSPATH/collectl/$filename.csv
+        fi
 elif [ $WORKLOAD = "false" ]; then
 for query_file in "$@"; do
   echo $query_file
@@ -106,23 +163,17 @@ for query_file in "$@"; do
   if [ $CACHE = "hot" ]; then
     repeats=2
   else
-    # TODO cold cache clean caches, clean also caches in server databases
-    # if [ "$SYSTEM" = "monetdb" ] ; then
-    #     $MONETDBBINPATH/monetdb -p $MONETDBPORT  stop "$DATAB"
-    # fi
+
     sudo sync; sudo sh -c 'echo 1 > /proc/sys/vm/drop_caches'
     sudo sync; sudo sh -c 'echo 2 > /proc/sys/vm/drop_caches'
     sudo sync; sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches'
     echo 3 | sudo  tee /proc/sys/vm/drop_caches
     sudo swapoff -a
     sudo swapon -a
-    # if [ "$SYSTEM" = "monetdb" ] ; then
-    #     $MONETDBBINPATH/monetdb -p $MONETDBPORT  start "$DATAB"
-    # fi
+
     repeats=1
   fi
   for ((i = 1; i <= $repeats; i++)); do
-    # rm -r "$RESULTSPATH/collectl/$SYSTEM"-"$DATABASE"-"$query_file"*
     filename="$SYSTEM"-"$DATABASE"-"$query_file"-t"$NTHREADS"-"$CACHE"-"$DISK"
     filenamesql=${SYSTEM}_${DATABASE}_${query_file}_t${NTHREADS}_${CACHE}_$DISK
     rm_output=$(rm -r "$RESULTSPATH/collectl/$filename"* 2>&1)
@@ -135,9 +186,9 @@ for query_file in "$@"; do
             collectl -f "$RESULTSPATH/collectl/$filename" -scdnm -F0 -i.1 &
         fi
         if [ $NTHREADS -eq 0 ]; then
-            { "$PYTHONEXEC" "$DUCKPATH" --duckdb-dbfile "$DUCKDBPATH/$DATAB".db  --duckdb-udfs "$DUCKDBUDFS" --duckdb-external "$EXTERNALPATH/$DATAB" --duckdb-sql "$DUCKDBQUERIES/q$query_file.sql"  ; } &> "$RESULTSPATH/$filename".txt
+            { "$PYTHONEXEC" "$DUCKDBEXEC" --duckdb-dbfile "$DUCKDBPATH/$DATAB".db  --duckdb-udfs "$DUCKDBUDFS" --duckdb-external "$EXTERNALPATH/$DATAB" --duckdb-sql "$DUCKDBQUERIES/q$query_file.sql" ; } &> "$RESULTSPATH/$filename".txt
         else
-            { "$PYTHONEXEC" "$DUCKPATH" --duckdb-dbfile "$DUCKDBPATH/$DATAB".db  --duckdb-udfs "$DUCKDBUDFS" --duckdb-external "$EXTERNALPATH/$DATAB" --duckdb-sql "$DUCKDBQUERIES/q$query_file.sql" --nthreads $NTHREADS ; } &> "$RESULTSPATH/$filename".txt
+            { "$PYTHONEXEC" "$DUCKDBEXEC" --duckdb-dbfile "$DUCKDBPATH/$DATAB".db  --duckdb-udfs "$DUCKDBUDFS" --duckdb-external "$EXTERNALPATH/$DATAB" --duckdb-sql "$DUCKDBQUERIES/q$query_file.sql" --nthreads $NTHREADS ; } &> "$RESULTSPATH/$filename".txt
         fi
 
         ;;
@@ -224,12 +275,10 @@ done
         case "$SYSTEM" in
             duckdb)
 
-                "$PYTHONEXEC" "$DUCKPATH" --duckdb-dbfile "$DUCKDBPATH/$DATAB".db  --duckdb-udfs "$DUCKDBUDFS" --duckdb-external "$EXTERNALPATH/$DATAB" --duckdb-sql "$DUCKDBQUERIES/q$query_file.sql" &>/dev/null
-                # "$PYTHONEXEC" "$DUCKPATH" --duckdb-dbfile "$DUCKDBPATH/$DATAB".db  --duckdb-udfs "$DUCKDBUDFS" --duckdb-external "$EXTERNALPATH/$DATAB" --duckdb-sql "$DUCKDBQUERIES/q1.sql" &>/dev/null
+                "$PYTHONEXEC" "$DUCKDBEXEC" --duckdb-dbfile "$DUCKDBPATH/$DATAB".db  --duckdb-udfs "$DUCKDBUDFS" --duckdb-external "$EXTERNALPATH/$DATAB" --duckdb-sql "$DUCKDBQUERIES/q$query_file.sql" &>/dev/null
                 ;;
             sqlite3)
                 "$PYTHONEXEC" "$SQLITEPATH"  "$SQLITEDBPATH/$DATAB".db "$SQLITEQUERIES/q$query_file.sql" "$SQLITESCALAR/scalar" "$SQLITEAGGRS/aggrs" &>/dev/null
-                # "$PYTHONEXEC" "$SQLITEPATH"  "$SQLITEDBPATH/$DATAB".db "$SQLITEQUERIES/q1.sql" "$SQLITESCALAR/scalar" "$SQLITEAGGRS/aggrs" &>/dev/null
                 ;;
             sqlitevtab)
                 :
@@ -258,7 +307,7 @@ EOF
         case "$SYSTEM" in
             duckdb)
 
-                "$PYTHONEXEC" "$DUCKPATH" --duckdb-dbfile "$DUCKDBPATH/$DATAB".db  --duckdb-udfs "$DUCKDBUDFS" --duckdb-external "$EXTERNALPATH/$DATAB" --duckdb-sql "$QUERY21_REVERT"  &>/dev/null
+                "$PYTHONEXEC" "$DUCKDBEXEC" --duckdb-dbfile "$DUCKDBPATH/$DATAB".db  --duckdb-udfs "$DUCKDBUDFS" --duckdb-external "$EXTERNALPATH/$DATAB" --duckdb-sql "$QUERY21_REVERT"  &>/dev/null
                 ;;
             sqlite3)
                 :
@@ -285,9 +334,12 @@ EOF
 done
 fi
 if [ "$SYSTEM" = "monetdb" ]  &&  [ $NTHREADS -gt  0 ];then
-            # echo $NTHREADS
             $MONETDBBINPATH/monetdb -p $MONETDBPORT  stop "$DATAB"
-            $MONETDBBINPATH/monetdb -p $MONETDBPORT  set nthreads=$DEFAULT_THREADS "$DATAB"
+            if [[ -n $DEFAULT_THREADS ]];then
+                $MONETDBBINPATH/monetdb -p $MONETDBPORT  set nthreads=$DEFAULT_THREADS "$DATAB"
+            else
+                $MONETDBBINPATH/monetdb -p $MONETDBPORT  set nthreads=$cores "$DATAB"
+            fi
             $MONETDBBINPATH/monetdb -p $MONETDBPORT  start "$DATAB"
 fi
 rm -rf "$RESULTSPATH/script/"*

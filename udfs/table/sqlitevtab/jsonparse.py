@@ -13,7 +13,7 @@ from sklearn.cluster import KMeans
 ### Classic stream iterator
 registered=True
 
-class outputs(vtbase.VT):
+class jsonparse(vtbase.VT):
   def VTiter(self, *parsedArgs, **envars):
     largs, dictargs = self.full_parse(parsedArgs)
     self.nonames=True
@@ -43,5 +43,5 @@ class outputs(vtbase.VT):
          raise
 
 def Source():
-    return vtbase.VTGenerator(outputs)
+    return vtbase.VTGenerator(jsonparse)
 

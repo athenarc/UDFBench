@@ -13,7 +13,7 @@ from collections import defaultdict
 ### Classic stream iterator
 registered=True
 
-class q16b_fused_dict(vtbase.VT):
+class q16b_fused(vtbase.VT):
   def VTiter(self, *parsedArgs, **envars):
     def cleandate(pubdate):
             if pubdate:
@@ -50,19 +50,14 @@ class q16b_fused_dict(vtbase.VT):
     self.nonames=True
     self.names=[]
     self.types=[]
-    # order_by_col = largs[0]
-    # count_col = largs[1]
+
     if 'query' not in dictargs:
             raise functions.OperatorError(__name__.rsplit('.')[-1],"No query argument ")
     query=dictargs['query']
     cur = envars['db'].cursor()
-    # print(query)
     rows = cur.execute(query)
     rows = cur.fetchall()
-    # print(rows[0])
-    # sch = list(cur.getdescriptionsafe())
-    # colnames = [x[0] for x in sch]
-    # data = list(rows)
+
     cur.close()
     results = defaultdict(lambda: {'authors_during': None, 'authors_before': None, 'authors_after': None})
 
@@ -104,20 +99,14 @@ class q16b_fused_dict(vtbase.VT):
 
             else:
                 results[key]['authors_after'] += 1 if pubdatecleaned > pendcleaned else 0
-    # print("okkkkk")
+
     yield (('funder',), ('_class',), ('projectid',), ('authors_during',), ('authors_before',),('authors_after',) )
 
     for (funder, _class, projectid), counts in results.items():
-      # print("row")
       yield (funder, _class, projectid, counts['authors_during'], counts['authors_before'], counts['authors_after'])
 
-    # df = pd.DataFrame(data)
-    # df['jcount'] = df.groupby([colnames.index(order_by_col)])[colnames.index(count_col)].transform('size')
-    # it = iterators(df)
-    # while True:
-    #    yield next(it)
 
 
 def Source():
-    return vtbase.VTGenerator(q16b_fused_dict)
+    return vtbase.VTGenerator(q16b_fused)
 

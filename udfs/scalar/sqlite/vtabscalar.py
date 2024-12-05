@@ -112,3 +112,13 @@ def extractfromdate(arg):
 
 extractfromdate.registered = True
 
+
+def strsplitv(val):
+        yield [('c1',)]
+        try:
+            vals=val.split()
+            for v in vals:
+                yield  (v,)
+        except:
+            yield  ['',]
+strsplitv.registered = True
