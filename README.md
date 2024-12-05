@@ -235,6 +235,11 @@ For installation and execution instructions, please refer to the **[README.txt](
 
 --- 
 
+## Disclaimer
+
+This software is provided "as is" without any warranties, express or implied.
+
+---
 
 
 
