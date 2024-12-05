@@ -343,12 +343,6 @@ class Scalar:
         else:
             return None
 
-    def clean_v2(self,args:pa.array) -> pa.array:
-        try:
-            args_list =args.to_pylist()
-            return [self.clean(arg) for arg in args_list]
-        except: 
-            return [None]
 
     # U3.	Cleandate: Reads a date and converts it to a common format if it is not, handles also dirty dates
 
@@ -379,6 +373,8 @@ class Scalar:
                 return None
         else:
             return None
+
+    # U3.	Cleandate(v2):Process a chunk at the time. Reads each date and converts it to a common format if it is not, handles also dirty dates
 
     def cleandate_v2(self,args:pa.array) -> pa.array:
         try:
@@ -439,11 +435,6 @@ class Scalar:
         else:
             return None
 
-    def extractcode_v2(self,projects:pa.array) -> pa.array:
-        try:
-            return pa.array([self.extractcode(project.as_py()) for project in projects])
-        except: 
-            return pa.array([None])
 
     # U7.	Extractday: Reads a date (as a string) and extracts an integer with the day 
 
@@ -456,18 +447,6 @@ class Scalar:
         else:
             return None
             
-    def extractday_v2(self,args:pa.array) -> pa.array:
-        def extractday(arg):
-            try:
-                return int(arg[arg.rfind('-')+1:])
-            except:
-                return None
-
-        try:
-            args_list =args.to_pylist()
-            return [extractday(arg) for arg in args_list]
-        except: 
-            return [None]
 
 
     # U8.	Extractfunder: extracts funder from string with format funder::class::projectid
@@ -509,18 +488,7 @@ class Scalar:
         else:
             return None
 
-    def extractmonth_v2(self,args:pa.array) -> pa.array:
-        def extractmonth(arg):
-            try:
-                return int(arg[arg.find('-')+1:arg.rfind('-')])
-            except:
-                return None
 
-        try:
-            args_list =args.to_pylist()
-            return [extractmonth(arg) for arg in args_list]
-        except: 
-            return [None]
 
 
     # U11.	Extractprojectid: Processes a text snippet and extracts a 6 digit project identifier 
@@ -546,19 +514,6 @@ class Scalar:
 
 
 
-    def extractyear_v2(self,args:pa.array) -> pa.array:
-        def extractyear(arg):
-            try:
-                return int(arg[:arg.find('-')])
-            except:
-                return None
-     
-
-        try:
-            args_list =args.to_pylist()
-            return [extractyear(arg) for arg in args_list]
-        except: 
-            return [None]
 
 
     # U13.	Filterstopwords: It processes an input text and returns it after removing the stopwords, using a list of stopwords
@@ -628,7 +583,6 @@ class Scalar:
 
 
     # U17.	Jsoncount: Returns the length of a json list
-    # @profile
     def jsoncount(self,jval: str) -> int:
         try:
             if jval[0]=='[':
@@ -639,13 +593,6 @@ class Scalar:
         except:
             return None
 
-
-    def jsoncount_v2(self,args:pa.array) -> pa.array:
-        try:
-            args_list =args.to_pylist()
-            return [self.jsoncount(arg) for arg in args_list]
-        except: 
-            return [None]
 
 
     # U18.	Jsonparse: Parses a json dict per time and returns a string with the value

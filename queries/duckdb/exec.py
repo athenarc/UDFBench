@@ -19,7 +19,6 @@ import itertools
 
 from sklearn.cluster import KMeans
 
-# import psutil
 from itertools import combinations
 from itertools import product
 import warnings
@@ -39,21 +38,12 @@ def createfunctions(con,UDFs,UDAFs,UDTFs):
         con.create_function('converttoeuro', UDFs.converttoeuro, [DOUBLE,VARCHAR],DOUBLE )
         con.create_function('extractclass', UDFs.extractclass, [VARCHAR], VARCHAR)
         con.create_function('extractcode', UDFs.extractcode, [VARCHAR], VARCHAR)
-        con.create_function('extractcode_v2', UDFs.extractcode_v2, [VARCHAR], VARCHAR,type='arrow')
         con.create_function('extractday', UDFs.extractday, [VARCHAR], BIGINT)
-        con.create_function('extractday_v2', UDFs.extractday_v2, [VARCHAR], BIGINT,type='arrow')
         con.create_function('extractfunder', UDFs.extractfunder, [VARCHAR], VARCHAR)
-
         con.create_function('extractid', UDFs.extractid, [VARCHAR], VARCHAR)
         con.create_function('extractmonth', UDFs.extractmonth, [VARCHAR], BIGINT)
-        con.create_function('extractmonth_v2', UDFs.extractmonth_v2, [VARCHAR], BIGINT,type='arrow')
-
-
         con.create_function('extractprojectid', UDFs.extractprojectid, [VARCHAR], VARCHAR)
         con.create_function('extractyear', UDFs.extractyear, [VARCHAR], BIGINT)
-        con.create_function('extractyear_v2', UDFs.extractyear_v2, [VARCHAR], BIGINT,type='arrow')
-
-
         con.create_function('filterstopwords', UDFs.filterstopwords, [VARCHAR], VARCHAR)
         con.create_function('filterstopwords_v2', UDFs.filterstopwords_v2, [VARCHAR], VARCHAR)
         con.create_function('frequentterms', UDFs.frequentterms, [VARCHAR,BIGINT],VARCHAR )
@@ -92,36 +82,23 @@ def createfunctions(con,UDFs,UDAFs,UDTFs):
         # Table UDFs
 
         date_type = con.struct_type({'year': DOUBLE, 'month': DOUBLE, 'day': DOUBLE})
-        con.create_function('extractfromdate', UDTFs.extractfromdate,[VARCHAR],date_type)
-        con.create_function('extractfromdate_v2', UDTFs.extractfromdate_v2,[VARCHAR],date_type,type='arrow')
+        con.create_function('extractfromdate', UDTFs.extractfromdate,[VARCHAR],date_type,type='arrow')
 
 
         jsonparse_type = con.struct_type({'publicationdoi': VARCHAR, 'fundinginfo': VARCHAR})
         con.create_function('jsonparse', UDTFs.jsonparse, [VARCHAR,VARCHAR,VARCHAR], jsonparse_type)
-        con.create_function('jsonparse_v2', UDTFs.jsonparse_v2, [VARCHAR,VARCHAR,VARCHAR], jsonparse_type,type='arrow')
 
-        con.create_function('combinations', UDTFs.combinations, [VARCHAR,BIGINT] ,con.list_type(VARCHAR))
-        con.create_function('combinations_v2', UDTFs.combinations_v2, [VARCHAR,BIGINT] ,con.list_type(VARCHAR),type='arrow')
-        comb_type = con.struct_type({'authorpair': VARCHAR,'fclass': VARCHAR,'funder': VARCHAR,'projectid': VARCHAR})
-        authors_sum = con.struct_type({'authors_after': DOUBLE,'authors_before': DOUBLE, 'authors_during': DOUBLE, 'fclass': VARCHAR,'funder': VARCHAR,'projectid': VARCHAR})
-
-        con.create_function('combinations_fused', UDTFs.combinations_fused, [VARCHAR,VARCHAR,BIGINT] ,con.list_type(comb_type),type='arrow')
-        con.create_function('q16b_fused_sub', UDTFs.q16b_fused_sub, [VARCHAR] ,con.list_type(authors_sum),type='arrow')
-        con.create_function('q16b_fused_dict', UDTFs.q16b_fused_dict, [VARCHAR] ,con.list_type(authors_sum),type='arrow')
+        con.create_function('combinations', UDTFs.combinations, [VARCHAR,BIGINT] ,con.list_type(VARCHAR),type='arrow')
 
 
         extractkeys_type = con.struct_type({'key1': VARCHAR, 'key2': VARCHAR})
-        con.create_function('extractkeys', UDTFs.extractkeys, [VARCHAR,VARCHAR,VARCHAR], extractkeys_type)
-        con.create_function('extractkeys_v2', UDTFs.extractkeys_v2, [VARCHAR,VARCHAR,VARCHAR], extractkeys_type, type='arrow')
+        con.create_function('extractkeys', UDTFs.extractkeys, [VARCHAR,VARCHAR,VARCHAR], extractkeys_type, type='arrow')
         
         strsplitv_type = con.struct_type({'term': con.list_type(VARCHAR)})
-        con.create_function('strsplitv', UDTFs.strsplitv, [VARCHAR] ,con.list_type(VARCHAR))
-        con.create_function('strsplitv_v2', UDTFs.strsplitv_v2, [VARCHAR] ,con.struct_type({'term': con.list_type(VARCHAR)}), type='arrow')
-        con.create_function('strsplitv_v3', UDTFs.strsplitv_v3, [VARCHAR,VARCHAR] ,con.struct_type({'docid':VARCHAR,'term': con.list_type(VARCHAR)}), type='arrow')
+        con.create_function('strsplitv', UDTFs.strsplitv, [VARCHAR] ,con.struct_type({'term': con.list_type(VARCHAR)}), type='arrow')
 
         jgroup_type = con.struct_type({'docid': VARCHAR,'jcount':BIGINT,'term':VARCHAR,'tf':DOUBLE})
 
-        # con.create_function('JGROUPORDERED', UDTFs.JGROUPORDERED, [VARCHAR,VARCHAR,VARCHAR], con.list_type(jgroup_type))
         con.create_function('JGROUPORDERED', UDTFs.JGROUPORDERED, [VARCHAR,VARCHAR,VARCHAR], con.list_type(jgroup_type),type='arrow')
 
         kmeans_type = con.struct_type({'cluster_id': BIGINT, 'fundedamount': DOUBLE,'id': VARCHAR, 'type': VARCHAR})
@@ -255,7 +232,6 @@ if __name__ == "__main__":
                 DATABASE_CSVS = str(args.duckdb_csvs)
                 os.system(f"""{DUCKDB_CLI} {DATABASE_PATH} < {DATABASE_SCHEMA}""")
                 os.system(f"""cd {DATABASE_CSVS}; {DUCKDB_CLI} {DATABASE_PATH} < {DATABASE_LOADS}""")
-                # os.system(f"""{DUCKDB_CLI} {DATABASE_PATH} '.schema' """)
             except FileNotFoundError:
                 print("Wrong arguments. Please check the file path.")
                 sys.exit(2)

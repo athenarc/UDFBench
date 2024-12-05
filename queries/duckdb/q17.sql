@@ -7,7 +7,7 @@ from (select unnest(JGROUPORDERED('
 select  term,docid,(1.0*count(*))/(1.0* sum(count(*)) OVER (PARTITION BY docid)) AS tf 
 from(
     
-        select docid, unnest(strsplitv_v2(abstract).term) as term from(
+        select docid, unnest(strsplitv(abstract).term) as term from(
             select  artifactid as docid, stem(filterstopwords(keywords(lowerize(abstract)))) as abstract from artifact_abstracts
         )
      )

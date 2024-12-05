@@ -7,7 +7,7 @@ WITH pairs(pubid, pubdate, projectstart, projectend,
                 extractfunder(projects.fundingstring) AS funder, 
                 extractclass(projects.fundingstring) AS class,
                 extractid(projects.fundingstring) AS projectid,
-                unnest(combinations_v2(jsort(jsortvalues(removeshortterms(lowerize(authorlist)))),2)) as authorpair
+                unnest(combinations(jsort(jsortvalues(removeshortterms(lowerize(authorlist)))),2)) as authorpair
                 from
                  projects, projects_artifacts, artifacts,artifact_authorlists  
                  where projects.id = projects_artifacts.projectid and projects_artifacts.artifactid = artifact_authorlists.artifactid and projects_artifacts.artifactid=artifacts.id 

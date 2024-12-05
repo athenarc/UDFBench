@@ -8,22 +8,11 @@ class Table:
         self.con = conn.cursor()
         self.external_path = external_path
 
-    # U30.	Extractfromdate: Reads a date (as a string) and returns 3 column values (year, month, day)
-
-    def extractfromdate(self,arg:str):
-        try:
-            return (int(arg[:arg.find('-')]),
-                        int(arg[arg.find('-')+1:arg.rfind('-')]),
-                        int(arg[arg.rfind('-')+1:])) 
-        except:
-            return (-1,-1,-1)
-
-
 
     # U30.	Extractfromdate(v2): Reads a date (as a string) and returns 3 column values (year, month, day)
 
 
-    def extractfromdate_v2(self,arg:str):
+    def extractfromdate(self,arg:str):
 
         def extractdate(arg):
             try:
@@ -38,7 +27,6 @@ class Table:
                 }
 
         return [(extractdate(str(x))) if x.is_valid else ({"year":None,"month":None,"day":None}) for x in arg]
-
 
 
 
@@ -60,53 +48,11 @@ class Table:
             return (None,None)
 
 
-    def jsonparse_v2(self,json_content: str,key1: str,key2: str):
-        import json
-
-        def jsonparse(json_content,key1,key2):
-            try:
-                data = json.loads(json_content)
-                if isinstance(data, list):
-                    for item in data:
-                        return ({'publicationdoi':item.get(key1), 'fundinginfo':item.get(key2)})
-                elif isinstance(data, dict):
-                        return ({'publicationdoi':data.get(key1),'fundinginfo':data.get(key2)})
-                else:
-                    return ({'publicationdoi':None, 'fundinginfo':None})
-            except:
-                return ({'publicationdoi':None, 'fundinginfo':None})
-        
-        return [(jsonparse(str(val),str(k1),str(k2))) if val.is_valid else ({"publicationdoi":None,"fundinginfo":None}) for val,k1,k2 in zip(json_content,key1,key2)]
-
-
-    # U32.	Combinations: Reads a json list and returns a table with all the combinations per an integer parameter
-
-    def combinations(self,jval:str,N:int):
-        import json
-        import itertools
-
-        from itertools import combinations
-
-        def jcombinations(jval,N):
-            if jval:
-                try:
-                    name_list = json.loads(jval)
-                    for name_per in itertools.combinations(name_list, N):
-                        yield json.dumps([name_per_i for name_per_i in name_per])
-                except:
-                    yield('[]') 
-            else:
-                yield None 
-        rows = []
-        for row in jcombinations(str(jval),int(N)):
-            rows.append(row)
-        return rows
 
 
     # U32.	Combinations(v2): Reads a json list and returns a table with all the combinations per an integer parameter
 
-    # @profile
-    def combinations_v2(self,jval:str,N:int):
+    def combinations(self,jval:str,N:int):
         import json
         import itertools
         from itertools import combinations
@@ -122,287 +68,15 @@ class Table:
                 yield None 
                 
         return [[y for y in  jcombinations(str(arg1),arg2.as_py())] if arg1.is_valid else [None] for arg1,arg2 in zip(jval,N) ]
+ 
+  
 
-    
-
-
-    def combinations_fused(self,fundingstring:str,jval:str,N:int):
-        import json
-        import itertools
-        from itertools import combinations
-        def jcombinations(jval,N=2):
-            if jval:
-                try:
-                    name_list = json.loads(str(jval))
-                    for name_per in itertools.combinations(name_list, int(N)):
-                        yield json.dumps([name_per_i for name_per_i in name_per])
-                except:
-                    yield('[]') 
-            else:
-                yield None 
-        
-        def extractfunder(project):
-            if project:
-                try:
-                    if '::' in project:
-                        return project.split("::")[0]
-                    else:
-                        return None
-                except:
-                    return None
-            else:
-                return 
-                
-        def extractclass(project):
-            if project:
-                try:
-                    return project.split("::")[1]
-                except:
-                    return None
-            else:
-                return None
-
-                
-        def extractid(project):
-            if project:
-                try:
-                    return project.split("::")[2]
-                except:
-                    return None
-            else:
-                return None
-
-        def extractfundingstring(project):
-            try:
-                listproject = project.split("::")
-                return  listproject[0], listproject[1], listproject[2]
-            except:
-                return None,None,None
-           
-    
-        def removeshortwords(name):
-            return " ".join([word for word in name.split(' ') if len(word) > 2])
-        
-        def sortname(name):
-            return " ".join(sorted(name.split(' ')))
-
-
-        def jfusedudfs(jval):
-            if jval:
-                try:
-                    jval = json.loads(jval)
-                    jval = [name.lower() for name in jval]
-                    jval = [removeshortwords(name) for name in jval]
-                    jval = [sortname(name) for name in jval]
-                    jval = sorted(jval)
-
-                    return json.dumps(jval)
-                except:
-                    return "[]"
-            else:
-                return None
-
-        # reslist = []
-        result = []
-        for _fundingstring, arg1, arg2 in zip(fundingstring, jval, N):
-            (funder, _class, projectid) = extractfundingstring(str(_fundingstring))
-            if arg1.is_valid:
-                sub_result = []
-                for y in jcombinations(jfusedudfs(str(arg1)), arg2.as_py()):
-                    sub_result.append({
-                        "funder": funder,
-                        "fclass": _class,
-                        "projectid": projectid,
-                        "authorpair": y
-                    })
-                result.append(sub_result)
-            else:
-                result.append([{
-                    "funder": funder,
-                    "fclass": _class,
-                    "projectid": projectid,
-                    "authorpair": None
-                }])
-        return result
-        # return [[{"funder":extractfunder(str(_fundingstring)),"fclass":extractclass(str(_fundingstring)),"projectid":extractid(str(_fundingstring)),"authorpair":y} for y in  jcombinations(str(arg1),arg2.as_py())] if arg1.is_valid else ({"funder":funder,"fclass":_class,"projectid":projectid,"authorpair":None}) for _fundingstring,arg1,arg2 in zip(fundingstring,jval,N) ]
-    def q16b_fused_sub(self,subquery:str):
-        import pandas as pd
-        import numpy as np
-        from collections import defaultdict
-
-        def cleandate(pubdate):
-            if pubdate:
-                try:
-                    if "-" in pubdate:
-                        splitnum = pubdate.count('-')
-                        pubdate_split = pubdate.split("-")
-                        if splitnum ==1:
-                            return pubdate_split[0] + "/" + pubdate_split[1] + "/" + "01"
-                        elif splitnum ==2:
-                            return pubdate_split[0] + "/" + pubdate_split[1] + "/" + pubdate_split[2]
-                        else:
-                            return None
-                    elif "/" in pubdate:
-                        splitnum = pubdate.count('/')
-                        pubdate_split = pubdate.split("/")
-                        if splitnum ==1:
-                            return pubdate_split[0] + "/" + pubdate_split[1] + "/" + "01"
-                        elif splitnum ==2:
-                            return pubdate_split[0] + "-" + pubdate_split[1] + "-" + pubdate_split[2]
-                        else:
-                            return None
-                    else:
-                        return None
-                except:
-                    return None
-            else:
-                return None
-                
-        try:
-
-            cur  = self.con
-            df = cur.sql(f"{str(subquery[0])};").fetchdf()
-            df['pstartcleaned'] = df['projectstart'].apply(cleandate)
-            df['pendcleaned'] = df['projectend'].apply(cleandate)
-            df['pubdatecleaned'] = df['pubdate'].apply(cleandate)
-
-            df.drop(['projectstart', 'projectend', 'pubdate'], axis=1, inplace=True)
-
-            df['authors_during'] = ((df['pubdatecleaned'] >= df['pstartcleaned']) & (df['pubdatecleaned'] <= df['pendcleaned'])).astype(int)
-            df['authors_before'] = (df['pubdatecleaned'] < df['pstartcleaned']).astype(int)
-            df['authors_after'] = (df['pubdatecleaned'] > df['pendcleaned']).astype(int)
-
-            result = (
-                df.groupby(['funder', 'fclass', 'projectid'], as_index=False)
-                .agg(
-                    authors_during=('authors_during', 'sum'),
-                    authors_before=('authors_before', 'sum'),
-                    authors_after=('authors_after', 'sum')
-                )
-            )
-
-            return [result.to_dict('records')]
-     
-        except Exception as e:
-            return [(None, None, None, None, None, None)]
-
-    # U32.	Combinations(v2): Reads a json list and returns a table with all the combinations per an integer parameter
-    def q16b_fused_dict(self,subquery:str):
-        import pandas as pd
-        import numpy as np
-        from collections import defaultdict
-
-        def cleandate(pubdate):
-            if pubdate:
-                try:
-                    if "-" in pubdate:
-                        splitnum = pubdate.count('-')
-                        pubdate_split = pubdate.split("-")
-                        if splitnum ==1:
-                            return pubdate_split[0] + "/" + pubdate_split[1] + "/" + "01"
-                        elif splitnum ==2:
-                            return pubdate_split[0] + "/" + pubdate_split[1] + "/" + pubdate_split[2]
-                        else:
-                            return None
-                    elif "/" in pubdate:
-                        splitnum = pubdate.count('/')
-                        pubdate_split = pubdate.split("/")
-                        if splitnum ==1:
-                            return pubdate_split[0] + "/" + pubdate_split[1] + "/" + "01"
-                        elif splitnum ==2:
-                            return pubdate_split[0] + "-" + pubdate_split[1] + "-" + pubdate_split[2]
-                        else:
-                            return None
-                    else:
-                        return None
-                except:
-                    return None
-            else:
-                return None
-                
-        try:
-
-            cur  = self.con
-
-            rows = cur.sql(f"{str(subquery[0])};").fetchall()
-            results = defaultdict(lambda: {'authors_during': None, 'authors_before': None, 'authors_after': None})
-
-
-            for row in rows:
-                invalid_val = True 
-                funder = row[0]
-                _class = row[1]
-                projectid = row[2]
-                
-                pstartcleaned = cleandate(row[3])
-                pendcleaned = cleandate(row[4])
-                pubdatecleaned = cleandate(row[5])
-                key = (funder, _class, projectid)
-
-                if key not in results:
-                    results[key]['authors_during'] = None
-                    results[key]['authors_before'] = None
-                    results[key]['authors_after'] = None
-
-                if  pubdatecleaned is None:
-                    continue
-
-
-                if pstartcleaned and pendcleaned:
-                    if results[key]['authors_during'] is None:
-                        results[key]['authors_during'] = 1 if pstartcleaned <= pubdatecleaned <= pendcleaned else None
-                    else:
-                        results[key]['authors_during'] += 1 if pstartcleaned <= pubdatecleaned <= pendcleaned else 0
-
-                if pstartcleaned:
-                    if results[key]['authors_before'] is None:
-                        results[key]['authors_before'] = 1 if pubdatecleaned < pstartcleaned else None
-                    else:
-                        results[key]['authors_before'] += 1 if pubdatecleaned < pstartcleaned else 0
-
-                if pendcleaned:
-                    if results[key]['authors_after'] is None:
-                        results[key]['authors_after'] = 1 if pubdatecleaned > pendcleaned else None
-
-                    else:
-                        results[key]['authors_after'] += 1 if pubdatecleaned > pendcleaned else 0
-    
-            res= [
-                    [{'funder':funder, 'fclass':_class, 'projectid':projectid, 'authors_during':counts['authors_during'], 'authors_before':counts['authors_before'], 'authors_after':counts['authors_after']} 
-                    for (funder, _class, projectid), counts in results.items()
-                ]]
-
-            return  res
-
-     
-        except Exception as e:
-            return [(None, None, None, None, None, None)]
 
 
     #  U33.	Extractkeys: Selects keys from xml parsed input 
 
 
     def extractkeys(self,jval:str,key1:str,key2:str):
-        import json
-        try:
-            data = json.loads(jval)
-
-            if isinstance(data, list):
-                for item in data:
-                    return  (item.get(key1),item.get(key2))
-
-            elif isinstance(data, dict):
-                return  (data.get(key1),data.get(key2))
-
-            else:
-                return  (None,None)
-        except:
-            return (None,None)
-
-    #  U33.	Extractkeys: Selects keys from xml parsed input 
-
-
-    def extractkeys_v2(self,jval:str,key1:str,key2:str):
         import json
 
         def extractkeys(jval,key1,key2):
@@ -422,21 +96,10 @@ class Table:
         
         return [(extractkeys(str(val),str(k1),str(k2))) if val.is_valid else ({"key1":None,"key2":None}) for val,k1,k2 in zip(jval,key1,key2)]
 
+
     #  U34.	Strsplitv: Processes a string at a time and returns its tokens in separate rows 
 
     def strsplitv(self,val:str):
-        if val:
-            try:
-                return val.split()   
-            except:
-                return []
-        else:
-            return None
-
-
-    #  U34.	Strsplitv: Processes a string at a time and returns its tokens in separate rows 
-
-    def strsplitv_v2(self,val:str):
         def strsplitv_loc(val):
             try:
                 return val.split()   
@@ -444,17 +107,7 @@ class Table:
                 return []
         return [{"term":strsplitv_loc(str(x))} if x.is_valid else ({"term":None}) for x in val]
    
-    #  U34.	Strsplitv: Processes a string at a time and returns its tokens in separate rows 
 
-    def strsplitv_v3(self,val:str,docid:str):
-        def strsplitv_loc(val):
-            try:
-                return val.split()   
-            except:
-                return []
-        res= [{"docid":y,"term":strsplitv_loc(str(x))} if x.is_valid else ({"docid":y,"term":None}) for x,y in zip(val,docid)]
-
-        return res
 
     #  U35.	JGROUPORDERED: Processes a subquery which is ordered by an attribute, and runs a group by with an aggregate defined as a (named) parameter
 
@@ -470,19 +123,6 @@ class Table:
             return [df.to_dict('records')]
         except:
             return [None]
-
-    #  U35.	JGROUPORDERED(v2): Processes a subquery which is ordered by an attribute, and runs a group by with an aggregate defined as a (named) parameter
-
-    def JGROUPORDERED_v2(self,term:str,docid:str,tf:float, order_by_col:str,count_col:str)->int:
-
-        dataset = pd.DataFrame({'term': term, 'docid':docid, 'tf':tf})
-        try:
-            grouped_data = dataset.groupby([str(order_by_col[0])])
-            dataset['jcount'] = grouped_data[str(count_col[0])].transform('size')
-            return dataset['jcount']
-        except:
-            dataset['jcount']= None
-            return dataset['jcount']
 
 
     #  U36.	Kmeans (iterative) : Clusters input data using kmeans, returns cluster id and data point

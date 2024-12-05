@@ -20,7 +20,6 @@ class Aggregate:
             value_column = str(value_column)
             avg_val = table[value_column].mean() if not table[value_column].isnull().all() else np.nan
 
-            # avg_val =  np.NaN if table[str(value_column)].isnull().all()  else np.nanmean(table[str(value_column)])
             return avg_val
         except:
             return None
