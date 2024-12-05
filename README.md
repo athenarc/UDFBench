@@ -231,10 +231,17 @@ For installation and execution instructions, please refer to the **[README.txt](
 | U41  | Output          | Exports the results of a subquery to local storage in various formats and returns true if it succeeds                      | T-9   | P       | P          | 1        | bool        | x        |          |               | x            |       | O(n)       |
 | U42  | getstats        | Inputs a table with integer values and returns the avg and the median for each input column                               | T-10  | P       | numeric    | P        | float       |         | x        |                |             |       | O(n*logn)  |
 
-
-
 --- 
+## UDFBench Paper Experiments
 
+For the paper experiments and the presented results, we utilized the following software versions: 
+MonetDB 5 server(v11.50.0), PostgreSQL (17), DuckDB (1.0.0), SQLite3 (3.37.2), Python (3.10.12), gcc (11.4.0), PyPy (7.3.12),
+CFFI (1.15.1), APSW (3.40.0.0), NumPy (1.26.4), Pandas (2.2.0),
+PyArrow(18.0.0), Scikit-learn (1.4.0), NLTK (3.8.1), Radon 6.0.1
+
+**Note**: If this experiment suite is run on different or newer software versions, some results may vary, and certain features might not be supported.
+
+---
 ## Disclaimer
 
 This software is provided "as is" without any warranties, express or implied.
