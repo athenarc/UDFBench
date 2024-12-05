@@ -1,4 +1,4 @@
-# Before executing the exec file, follow these steps:
+# To install and experiment with the benchmark run the following steps:
 
 # 1. Grant execute permissions to bash scripts, with the following command:
 find . -type f -name "*.sh" -exec  chmod +x {} \;
