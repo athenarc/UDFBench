@@ -59,8 +59,8 @@ UDFBench provides a flexible framework for running experiments on various databa
    - Use **[collectl](https://collectl.sourceforge.net/)** to monitor system resource usage (CPU, memory, disk, etc.).  
    - Store the results for post-experiment analysis.  
 
-The experimental results are stored in the RESULTSPATH which is defined at **[utilities/config.sh](utilities/config.sh)**
- (see **[README.txt](README.txt)**).
+The experimental results are stored in the RESULTSPATH which is defined at **[utilities/config.sh](utilities/config.sh)**.
+
 
 These customizable settings enable users to tailor experiments to specific performance scenarios, providing valuable insights into UDF and query performance.  
 
