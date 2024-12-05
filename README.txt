@@ -84,39 +84,6 @@ Variables in the Configuration file for DuckDB:
 7.	DUCKDBCLI: Path to the DuckDB CLI (Command Line Interface) executable. The CLI is used to connect to the DuckDB  databases directly from the terminal (e.g., export DUCKDBCLI=$PWD'/databases/duckdb/cli/duckdb').
 
 
-How to set up Duckdb:
-For this experiment, we used DuckDB v1.0.0. for both CLI and DuckDB library. The path for the CLI to create/deploy a new database should be specified. If you are using a different version, make sure the paths in your configuration file are set to the correct cli executable and database locations.
-
-Duckdb execution file parameters to run a query :
---duckdb-dbfile : Path to the Duckdb database file (*Required with file path)
---duckdb-udfs : Path to the Duckdb UDFs library (*Required with folder path)
---duckdb-sql : Path to the Duckdb SQL query (*Required with file path)
---duckdb-external: Path to external files (*Required  with folder path, for queries with external files)
---print-results : Prints the query results in a DataFrame format(Optional)
---profiling: Enable profiling (Optional)
---nthreads: Set number of threads (Optional)
-
-Example command to run a query:
-"$PYTHONEXEC" "$DUCKDBEXEC" --duckdb-dbfile "$DUCKDBSSDPATH/large.db  \
-          --duckdb-udfs "$DUCKDBUDFS" --duckdb-external "$EXTERNALPATH/large.db" \
-          --duckdb-sql "$DUCKDBQUERIES/q1.sql"  --print-results –nthreads 1
-The above example sets the number of threads to 1, runs query 1 for the large database, and prints the results.
-
-To create and deploy the databases from scratch, use these parameters:
---createdb: Flag to indicate that a new database should be created. (*Required flag)
---duckdb-dbfile : Path to the database file where the new database will be created (*Required with a file path)
---duckdb-schema: Path to the schema SQL file that defines the structure of your database  (*Required with a file path)
---duckdb-cli : Path to the DuckDB CLI executable. (*Required with a file path)
---duckdb-loads: Path to the load SQL file (*Required with a file path)
---duckdb-csvs: Path to the folder containing the CSV files to be loaded into the database (*Required with a folder path referenced in the load SQL file)
-
-Example command to create/deploy a database:
-"$PYTHONEXEC" "$DUCKDBEXEC" –createdb –duckdb-cli $DUCKDBCLI \
-         --duckdb-dbfile "$DUCKDBSSDPATH/large.db" --duckdb-schema $PWD’/schema/duckdb_schema.sql’ \
-         --duckdb-loads $PWD’/dataset/load_scripts/duckdb_load.sql’ --duckdb-csvs $CSVSPATH/large/
-The above example  will create a new database (large.db) and load data from the CSV files for the large dataset.
-
-
 
 
 Run Experiment script parameters:
