@@ -87,6 +87,22 @@ Variables in the Configuration file for DuckDB:
 
 7.	DUCKDBCLI: Path to the DuckDB CLI (Command Line Interface) executable. The CLI is used to connect to the DuckDB  databases directly from the terminal (e.g., export DUCKDBCLI=$PWD'/databases/duckdb/cli/duckdb').
 
+Variables in the Configuration file for PySpark:
+1.	PYSPARKPATH: Path to the PySpark executable (e.g., export  PYSPARKPATH=$PWD'queries/pyspark/exec.py’).
+
+2.	PARQUETPATH: Path to the folder where Parquet files are stored   (e.g., export PARQUETPATH=$PWD'/dataset/parquet').
+
+3.	PYSPARKLOADS: Path to the PySpark Python file used for loading data  (e.g.,  export PYSPARKLOADS=$PWD'/dataset/load_scripts').
+
+4.	PYSPARKSCHEMA: Path to the PySpark Python file that defines the schema for Parquet files  (e.g.,  export PYSPARKSCHEMA=$PWD'/schema')
+
+5.	PYSPARKUDFS: Path to the Pyspark UDFs (User Defined Functions) library (e.g., export  PYSPARKUDFS =$PWD'/udfs’).
+
+6.	PYSPARKQUERIES: Path to the Pyspark SQL query files (e.g., export  PYSPARKQUERIES=$PWD'/queries/pyspark').
+
+7.	PYSPARK_DRIVER_PYTHON: Path to the Python 3 executable that PySpark should use for its driver program (e.g., export PYSPARK_DRIVER_PYTHON=$(which python3)).
+
+8. PYSPARK_PYTHON: Path to the Python 3 executable that PySpark should use for the executors (e.g., export PYSPARK_PYTHON=$(which python3)).
 
 # 3. Install Required Ubuntu Packages:
 "./utilities/README.Ubuntu.sh"
