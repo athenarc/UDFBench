@@ -37,6 +37,16 @@ export SQLITEQUERIES=$PWD'/queries/sqlite'
 export SQLITEVTABQUERIES=$PWD'/queries/sqlitevtab'
 export DUCKDBQUERIES=$PWD'/queries/duckdb'
 export CSVSPATH=$PWD'/dataset/csvs'
+
+export PYSPARK_DRIVER_PYTHON=$(which python3)
+export PYSPARK_PYTHON=$(which python3)
+export PYSPARKPATH=$PWD'/queries/pyspark/exec.py'
+export PARQUETPATH=$PWD'/dataset/parquet'
+export PYSPARKUDFS=$PWD'/udfs'
+export PYSPARKSCHEMA=$PWD'/schema'
+export PYSPARKLOADS=$PWD'/dataset/load_scripts'
+export PYSPARKQUERIES=$PWD'/queries/pyspark'
+
 # Set environment variables for set up
 export MONETDBINSTANCE='udfbench' 
 export MONETDBDIRPATH=$PWD'/databases/monetdb'

@@ -102,6 +102,9 @@ shift
                         1 4 8 12 14 20
                         $PWD'/utilities/runexperiment.sh' sqlitevtab $database t0 cold $DISK false true \
                         2 5 6 7 9 10 11 13 15 16 17 18 19 21
+                    elif [[ $system == "pyspark" ]]; then
+                        $PWD'/utilities/runexperiment.sh' $system $database t0 cold $DISK false  true\
+                        1 2 3 4 7 8 9 12 13 14 15 16 18
                     fi
                 done
             done

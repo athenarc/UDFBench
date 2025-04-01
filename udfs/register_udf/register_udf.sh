@@ -9,7 +9,7 @@ if [ "$#" -lt 3 ]; then
 fi
 
 SYSTEM="$1"
-if  [ "$SYSTEM" != "postgres" ] && [ "$SYSTEM" != "monetdb" ] ; then
+if  [ "$SYSTEM" != "postgres" ] && [ "$SYSTEM" != "monetdb" ] && [ "$SYSTEM" != "pyspark" ] ; then
     echo "Invalid system. Please specify 'monetdb' or 'postgres'."
     exit 1
 fi
@@ -64,6 +64,11 @@ shift
             ;;
         monetdb)
             $MONETDBPATH -p $MONETDBPORT -d "$DATAB"  -t performance --interactive < monetdb_register_udf.sql;
+            ;;
+        pyspark)
+            export CURRENT=$PWD
+            cd ../scalar/pyspark;./pyspark_scalar_scala.sh; cd $CURRENT;
+            cd ../scalar/pyspark;./pyspark_scalar_java.sh; cd $CURRENT;
             ;;
         *)
             echo "Unsupported system: $SYSTEM"

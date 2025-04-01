@@ -8,8 +8,8 @@ if [ "$#" -lt 2 ]; then
 fi
 
 SYSTEM="$1"
-if [ "$SYSTEM" != "sqlite3" ] && [ "$SYSTEM" != "sqlitevtab" ] && [ "$SYSTEM" != "postgres" ] && [ "$SYSTEM" != "monetdb" ] && [ "$SYSTEM" != "duckdb" ] && [ "$SYSTEM" != "duckdbpandas" ]; then
-    echo "Invalid system. Please specify 'sqlite' or 'postgres'."
+if [ "$SYSTEM" != "sqlite3" ] && [ "$SYSTEM" != "pyspark" ] && [ "$SYSTEM" != "sqlitevtab" ] && [ "$SYSTEM" != "postgres" ] && [ "$SYSTEM" != "monetdb" ] && [ "$SYSTEM" != "duckdb" ]; then
+    echo "Invalid system. Please specify 'sqlite3' , 'postgres', 'pyspark' , 'sqlitevtab','monetdb' or 'duckdb'."
     exit 1
 fi
 shift
@@ -192,7 +192,21 @@ for query_file in "$@"; do
         fi
 
         ;;
+        pyspark)
+        sed -i.bak -e "s|[^']*\.txt'|"$EXTERNALPATH/$DATAB"/&|g" \
+        -e "s|[^']*\.csv'|"$EXTERNALPATH/$DATAB"/&|g" -e "s|[^']*\.xml'|"$EXTERNALPATH/$DATAB"/&|g" -e "s|[^']*\.json'|"$EXTERNALPATH/$DATAB"/&|g" "$PYSPARKQUERIES/q$query_file.sql"
+       
 
+        if  [ $COLLECTL = "true" ]; then 
+            collectl -f "$RESULTSPATH/collectl/$filename" -scdnm -F0 -i.1 &
+            COLLECTL_PID=$!
+        fi
+        "$PYTHONEXEC" "$PYSPARKPATH" --pyspark-schema "$PYSPARKSCHEMA" --pyspark-loads "$PYSPARKLOADS" --pyspark-parquet "$PARQUETPATH/$DATAB" --pyspark-udfs "$PYSPARKUDFS" --pyspark-sql  "$PYSPARKQUERIES/q$query_file.sql"  &> "$RESULTSPATH/$filename".txt
+        if  [ $COLLECTL = "true" ]; then 
+            kill $COLLECTL_PID
+        fi
+        mv "$PYSPARKQUERIES/q$query_file.sql.bak" "$PYSPARKQUERIES/q$query_file.sql"
+        ;;
         sqlitevtab)
 
         sed -i.bak -e "s|[^']*\.txt'|"$EXTERNALPATH/$DATAB"/&|g" \

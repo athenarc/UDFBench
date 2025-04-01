@@ -21,4 +21,9 @@ sudo apt-get install -y \
 	python3.10 \
 	python3.10-dev \
 	build-essential\
-	pkg-config
+	pkg-config\
+	openjdk-8-jre\
+	openjdk-8-jdk \
+	scala \
+	git\
+	maven

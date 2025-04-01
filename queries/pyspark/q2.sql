@@ -1,0 +1,1 @@
+SELECT * FROM extractfromdate(TABLE((select id,date from artifacts)));
