@@ -60,6 +60,7 @@ case "$SYSTEM" in
     :
     ;;
     pyspark)
+        $PYTHONEXEC $CURRENT'/utilities/csv_to_parquet.py' $CSVSPATH $PARQUETPATH $DATAB;
         cd $CURRENT'/udfs/register_udf';
         ./register_udf.sh $SYSTEM $DATABASE $DISK
         ;;

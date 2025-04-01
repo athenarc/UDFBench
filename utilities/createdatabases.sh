@@ -12,8 +12,8 @@ if [ "$#" -lt 3 ]; then
 fi
 
 SYSTEM="$1"
-if [ "$SYSTEM" != "sqlite3" ] && [ "$SYSTEM" != "postgres" ] && [ "$SYSTEM" != "monetdb" ] && [ "$SYSTEM" != "duckdb" ]; then
-    echo "Invalid system. Please specify 'sqlite', 'postgres','monetdb' or 'duckdb'."
+if [ "$SYSTEM" != "sqlite3" ] && [ "$SYSTEM" != "postgres" ] && [ "$SYSTEM" != "monetdb" ] && [ "$SYSTEM" != "duckdb" ] && [ "$SYSTEM" != "pyspark" ]; then
+    echo "Invalid system. Please specify 'sqlite', 'postgres','monetdb', 'pyspark' or 'duckdb'."
     exit 1
 fi
 shift
@@ -71,6 +71,9 @@ case "$SYSTEM" in
         ;;
     duckdb)
         # "$DUCKDBCLI" "$DUCKDBPATH/$DATAB".db 
+        :
+        ;;
+    pyspark)
         :
         ;;
     postgres)
