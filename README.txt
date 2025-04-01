@@ -102,7 +102,8 @@ Variables in the Configuration file for PySpark:
 
 7.	PYSPARK_DRIVER_PYTHON: Path to the Python 3 executable that PySpark should use for its driver program (e.g., export PYSPARK_DRIVER_PYTHON=$(which python3)).
 
-8. PYSPARK_PYTHON: Path to the Python 3 executable that PySpark should use for the executors (e.g., export PYSPARK_PYTHON=$(which python3)).
+8.	PYSPARK_PYTHON: Path to the Python 3 executable that PySpark should use for the executors (e.g., export PYSPARK_PYTHON=$(which python3)).
+
 
 # 3. Install Required Ubuntu Packages:
 "./utilities/README.Ubuntu.sh"
