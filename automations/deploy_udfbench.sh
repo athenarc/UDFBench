@@ -31,7 +31,7 @@ shift
 
     case $DOWNLOAD in
         yes)
-            "$DATASETSPATH"/etl/download_dateset.sh
+            "$DATASETSPATH"/etl/download_dataset.sh
             databases=("small" "medium" "large")
             for database in "${databases[@]}"; do
                 mv "$DATASETSPATH"/externalfiles/"$database"/ "$DATASETSPATH"/files/
