@@ -55,8 +55,7 @@ UDFBench provides a flexible framework for running experiments on various databa
 2. **Parallelism**: Control the number of threads to run.  
 3. **Cache State**: Select between `cold` (fresh start) or `hot` (preloaded) cache scenarios.  
 4. **Storage Medium**: Test performance on different storage types: hdd, ssd, memory. 
-5. **Workload**: Execute multiple queries to experiment with workload execution.  
-6. **Resource Utilization Monitoring**:  
+5. **Resource Utilization Monitoring**:  
    - Use **[collectl](https://collectl.sourceforge.net/)** to monitor system resource usage (CPU, memory, disk, etc.).  
    - Store the results for post-experiment analysis.  
 
