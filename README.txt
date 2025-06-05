@@ -220,9 +220,6 @@ Scenario 4a – Sqlite with Storage: The script will run Query 1 on SQLite syste
 Scenario 4b – Sqlitevtab with Storage: The script will run Query 2 on SQLitevtab system,  using the large dataset, with default thread, cold cache, on HDD storage, without wordload, and with collectl 
 (e.g.,  ./automations/run_udfbench.sh sqlitevtab l t0  cold hdd false true 2)
 
-Scenario 5 – Postgres with Workload: The script will run Queries 1 -5 on PostgreSQL system,  using the medium dataset, with default threads, cold cache, on SSD storage, with wordload, and without collectl 
-(e.g.,  ./automations/run_udfbench.sh postgres m  t0 cold ssd true false 1 2 3 4 5)
-
 Scenario 6 – Monetdb with Resources: The script will run Queries 1- 7 on MonetDB system,  using the large dataset, with default threads, cold cache, on SSD storage, without wordload, and with collectl 
 (e.g.,  ./automations/run_udfbench.sh monetdb l  t0 cold ssd false true 1 2 3 4 5 6 7)
 
