@@ -1,0 +1,499 @@
+
+Instructions to add a new system to UDF Benchmark.
+
+=================================================
+
+To integrate a new system into the udf benchmark, follow this steps:
+
+#1 Folder Structure
+-------------------
+-------------------
+
+Under the engines/ directory, create a new folder named after your system in lowercase.
+Inside it, create the subfolders queries/, scripts/ and udfs/ .
+All the folders and file names must be in lowercase.
+Replace the "db_name" with your actual system name.
+
+engines/
+└── "db_name"/   #replace "db_name" with the actual name of your system        
+    ├── queries/
+    │   ├── q1.sql
+    │   ├── ...
+    │   ├── q21.sql
+    │   └── extra/
+    │       └── q12a.sql   
+    │
+    ├── scripts/
+    │   ├── "db_name"_config.sh	#replace "db_name" with the actual name of your system
+    │   ├── "db_name"_setup.sh #replace "db_name" with the actual name of your system
+    │   ├── create_database.sh
+    │   ├── create_schema.sh
+    │   ├── load_schema.sh
+    │   └── run_experiment.sh
+    │
+    └── udfs/
+        ├── aggregate/
+        ├── scalar/
+        └── table/
+
+
+
+#2 Add SQL Queries (1-21)
+-------------------------
+-------------------------
+
+Under the folder queries/, place only the SQL files for queries 1-21.
+
+Structure:
+
+queries/
+├── q1.sql
+├── ...
+└── q21.sql
+
+if you have any extra query, place it under queries/extra/.
+
+
+#3 Add UDF files for the benchmark
+----------------------------------
+----------------------------------
+
+To deploy the benchmark in your database system.
+Place your custom UDF files under the udfs/ folder.
+
+Structure:
+
+udfs/
+├── aggregate/ #For the aggregate UDFs
+├── scalar/ 	#For the scalar UDFs
+└── table/	#For the table UDFs
+
+Include only the necessary UDF files to run the benchmark. 
+Leave any unused subfolders empty.
+
+#4 Implement Required scripts
+-----------------------------
+-----------------------------
+
+Place the following shell scripts under the scripts/ folder.
+If any file is not needed, create it and leave it empty.
+
+Structure:
+
+scripts/
+├── "db_name"_config.sh	#replace "db_name" with the actual name of your system
+├── "db_name"_setup.sh #replace "db_name" with the actual name of your system
+├── create_database.sh
+├── create_schema.sh
+├── load_schema.sh
+└── run_experiment.sh
+
+
+4.a Set System enviroment variables: "db_name"_config.sh
+--------------------------------------------------------
+
+To deploy and/or run the benchmark for your system, define the required enviroment variables inside the script "db_name"_config.sh.
+
+The variable $"DB_NAME"RESULTSPATH is required to collect all experiment results into a log file. 
+
+export "DB_NAME"RESULTSPATH=$PWD'/results/logs/"db_name"' #replace "DB_NAME"/"db_name" with the actual name of your system
+
+Full example for PostgreSQL:
+export POSTGRESRESULTSPATH=$PWD'/results/logs/postgres'
+export POSTGRESQUERIES=$PWD'/engines/postgres/queries'
+export POSTGRESUDFS=$PWD'/engines/postgres/udfs'
+export POSTGRESSCRIPTS=$PWD'/engines/postgres/scripts'
+export POSTGRESPATH=$PWD'/databases/postgres'
+export PSQLPATH=$PWD'/databases/postgres/bin/psql'
+
+export PSQLSSDPORT="50007" 	#Port for SSD 
+export PSQLHDDPORT=""		#port for HDD
+export PSQLMEMPORT=""		#port for in-memory	
+export PSQLUSER=$USER		#database user
+
+Create similar variables for your system and use them in your scripts.
+
+
+4.b (Optimal) Install the database system from source: "db_name"_setup.sh
+--------------------------------------------------------------------------
+
+Replace "db_name" with the actual name of your system.
+Leave the file empty if no setup is required.
+
+
+4.c Create the UDFbenchmark database: create_database.sh
+---------------------------------------------------------
+
+The create_database.sh script is required to create the benchmark databases (tiny, small, medium, large).
+
+Takes two arguments as input:
+-$database (t for tiny, s for small , m for medium or l for large)
+-$DISK (ssd, mem or hdd) 
+
+Example script snippet for PostgreSQL:
+
+...
+
+if [ "$#" -lt 2 ]; then
+    echo "Usage: $0 <database> <disk> "
+    exit 1
+fi
+
+
+DATABASE="$1"
+shift
+
+
+DATAB="tiny"
+    case $DATABASE in
+        t)
+            DATAB="tiny"
+            ;;
+        s)
+            DATAB="small"
+            ;;
+        m)
+            DATAB="medium"
+            ;;
+        l)
+            DATAB="large"
+            ;;
+        *)
+            echo "Invalid input"
+            ;;
+    esac
+
+DISK="$1"
+
+PSQLPORT=$PSQLSSDPORT
+
+if [ $DISK = "ssd" ]; then
+    true
+elif [ $DISK = "hdd" ]; then
+
+    PSQLPORT=$PSQLHDDPORT
+elif [ $DISK = "mem" ]; then
+    PSQLPORT=$PSQLMEMPORT
+fi
+shift
+...
+
+
+4.d Create the UDFbenchmark schema: create_schema.sh
+----------------------------------------------------
+
+The create_schema.sh script is required to create the benchmark schema.
+Takes two arguments as input:
+-$database (t for tiny, s for small , m for medium or l for large)
+-$DISK (ssd, mem or hdd)
+
+
+Example script snippet for PostgreSQL:
+
+...
+
+if [ "$#" -lt 2 ]; then
+    echo "Usage: $0 <database> <disk> "
+    exit 1
+fi
+
+
+
+DATABASE="$1"
+shift
+
+DATAB="tiny"
+    case $DATABASE in
+        t)
+            DATAB="tiny"
+            ;;
+        s)
+            DATAB="small"
+            ;;
+        m)
+            DATAB="medium"
+            ;;
+        l)
+            DATAB="large"
+            ;;
+        *)
+            echo "Invalid input"
+            ;;
+    esac
+
+DISK="$1"
+
+PSQLPORT=$PSQLSSDPORT
+
+if [ $DISK = "ssd" ]; then
+    true
+elif [ $DISK = "hdd" ]; then
+    PSQLPORT=$PSQLHDDPORT
+elif [ $DISK = "mem" ]; then
+    PSQLPORT=$PSQLMEMPORT
+fi
+shift
+
+...
+
+
+4.e Load the UDFbenchmark data: load_schema.sh
+----------------------------------------------
+
+The load_schema.sh script is required to load the benchmark data into your database.
+
+Takes three arguments as input:
+-$database (t for tiny, s for small , m for medium or l for large)
+-$DISK (ssd, mem or hdd)
+-$dataset (full path to the benchmark dataset directory (csvs, parquet). Structure:
+dataset/
+├── csvs/
+│   ├── tiny/      
+│   ├── small/
+│   ├── medium/
+│   └── large/
+│
+├── parquet/
+│   ├── tiny/      
+│   ├── small/
+│   ├── medium/
+│   └── large/
+...
+
+
+Example script snippets for PostgreSQL:
+
+...
+if [ "$#" -lt 3 ]; then
+    echo "Usage: $0  <database> <disk> <dataset>"
+    exit 1
+fi
+
+DATABASE="$1"
+shift
+
+DATAB="tiny"
+    case $DATABASE in
+        t)
+            DATAB="tiny"
+            ;;
+        s)
+            DATAB="small"
+            ;;
+        m)
+            DATAB="medium"
+            ;;
+        l)
+            DATAB="large"
+            ;;
+        *)
+            echo "Invalid input"
+            ;;
+    esac
+
+DISK="$1"
+shift
+
+DATASETPATH="$1"
+shift
+
+PSQLPORT=$PSQLSSDPORT
+
+if [ $DISK = "ssd" ]; then
+    true
+elif [ $DISK = "hdd" ]; then
+    PSQLPORT=$PSQLHDDPORT
+elif [ $DISK = "mem" ]; then
+  
+    PSQLPORT=$PSQLMEMPORT
+fi
+
+...
+sed -i.bak "s|[^']*\.csv'|"$DATASETPATH/csvs/$DATAB"/&|g" "$POSTGRESSCRIPTS"/postgres_load.sql;
+
+$PSQLPATH -U $PSQLUSER -p $PSQLPORT "$DATAB" -f "$POSTGRESSCRIPTS"/postgres_load.sql;
+
+mv "$POSTGRESSCRIPTS"/postgres_load.sql.bak "$POSTGRESSCRIPTS"/postgres_load.sql;
+
+...
+
+
+4.f Run UDF Benchmark Experiment: run_experiment.sh
+-----------------------------------------------
+
+The run_experiment.sh script is required to run the UDF benchmark. 
+
+Input parameters:
+
+1. $database: Dataset size to use. Options: t for tiny, s for small, m for medium or l for large
+
+2. $threads: Number of threads to use for query execution. Options: '0' for default threads, 'n' for n threads.
+
+3. $cache: Cache mode before running queries. Options: 'hot' (preloaded cache) or 'cold' (clean cache)
+
+4. $disk: Storage type. Options: ssd, mem, or hdd
+
+5. $collectl: System performance monitoring. Options: 'true' (enable collectl), or 'false' (disable collectl)
+
+6. $externalpath: Full Path to the `datasets/files/` directory, which contains external files used by queries.
+
+7. $pythonexec: Path to the Python interpreter used to run helper scripts.
+
+8. $query_file1...: One or more SQL query full paths.
+
+
+
+Example script snippets for PostgreSQL:
+
+...
+#read the variables
+
+if [ "$#" -lt 8 ]; then
+    echo "Usage: $0 <database_file> <threads> <cache> <disk> <collectl> <externalpath> <pythonexec> <query_file1> [<query_file2> ...]"
+    exit 1
+fi
+
+DATABASE="$1"
+shift
+
+
+NTHREADS="$1"
+
+shift
+CACHE="$1"
+shift
+DISK="$1"
+shift
+
+COLLECTL="$1"
+shift
+
+EXTERNALPATH="$1"
+shift
+
+PYTHONEXEC="$1"
+shift
+
+#init query file array
+arr=("$@")
+
+...
+
+#create the output folders
+if [ ! -d "$POSTGRESRESULTSPATH" ]; then
+    mkdir -p "$POSTGRESRESULTSPATH"
+    mkdir -p "$POSTGRESRESULTSPATH/experiments"
+    mkdir -p "$POSTGRESRESULTSPATH/collectl"
+fi
+
+...
+#set the actual name of the database
+DATAB="tiny"
+    case $DATABASE in
+        t)
+            DATAB="tiny"
+            ;;
+        s)
+            DATAB="small"
+            ;;
+        m)
+            DATAB="medium"
+            ;;
+        l)
+            DATAB="large"
+            ;;
+        *)
+            echo "Invalid input"
+            ;;
+    esac
+
+...
+#set port based on disk type
+PSQLPORT=$PSQLSSDPORT
+
+if [ $DISK = "ssd" ]; then
+    true
+elif [ $DISK = "hdd" ]; then
+    PSQLPORT=$PSQLHDDPORT
+elif [ $DISK = "mem" ]; then
+    PSQLPORT=$PSQLMEMPORT
+fi
+
+...
+
+#iter over all the query files
+for query_file in "${arr[@]}"; do 
+
+  #set number of repeats and clean cache, if $cache='cold'
+  repeats=1
+  if [ $CACHE = "hot" ]; then
+    repeats=2
+  else
+
+    sudo sync; sudo sh -c 'echo 1 > /proc/sys/vm/drop_caches'
+    sudo sync; sudo sh -c 'echo 2 > /proc/sys/vm/drop_caches'
+    sudo sync; sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches'
+    echo 3 | sudo  tee /proc/sys/vm/drop_caches
+    sudo swapoff -a
+    sudo swapon -a
+
+    repeats=1
+  fi
+....
+
+    #extract query number from the query file and create the result filename 
+    query_number="${query_file##*/q}"
+    query_number="${query_number%.sql}" # extract the query number 
+    filename="$DATABASE"-"$query_number"-t"$NTHREADS"-"$CACHE"-"$DISK"
+    rm_output=$(rm -r "$POSTGRESRESULTSPATH/collectl/$filename"* 2>&1)
+
+....
+    #adjust external file for the current database size (tiny, small, medium, or large)
+    sed -i.bak -e "s|[^']*\.txt'|"$EXTERNALPATH/$DATAB"/&|g" \
+    -e "s|[^']*\.csv'|"$EXTERNALPATH/$DATAB"/&|g" -e "s|[^']*\.xml'|"$EXTERNALPATH/$DATAB"/&|g" -e "s|[^']*\.json'|"$EXTERNALPATH/$DATAB"/&|g" "$query_file"
+
+...
+    #enable collectl monitoring, if needed
+    if  [ $COLLECTL = "true" ]; then 
+        collectl -f "$POSTGRESRESULTSPATH/collectl/$filename" -scdnm -F0 -i.1 &
+        COLLECTL_PID=$!
+    fi
+....
+    #set threads, and run a query 
+    PNTHREADS=$((NTHREADS - 1))
+
+    if [ $PNTHREADS -eq -1 ]; then #default threads
+        $PSQLPATH -U $PSQLUSER -p $PSQLPORT "$DATAB" -f "$query_file"  > "$POSTGRESRESULTSPATH/experiments/$filename".txt
+    else
+        $PSQLPATH -U "$PSQLUSER" -p "$PSQLPORT" -d "$DATAB" -c "SET max_parallel_workers = $PNTHREADS; SET  max_parallel_workers_per_gather = $PNTHREADS;" -f "$query_file" > "$POSTGRESRESULTSPATH/experiments/$filename.txt"
+    fi
+ ...
+
+    #stop collectl and convert the raw data to csv format, if needed
+    if  [ $COLLECTL = "true" ]; then 
+        kill $COLLECTL_PID
+    fi
+
+    if  [ $COLLECTL = "true" ]; then 
+        collectl -p $POSTGRESRESULTSPATH/collectl/$filename*.gz -scdnm -P  > $POSTGRESRESULTSPATH/collectl/$filename.csv
+    fi
+   
+...
+
+
+5. Summary
+----------
+----------
+
+To integrate a new system into the UDF Benchmark, follow these main steps:
+- Create folder structure under engines/ (including queries/, scripts/, and udfs/).
+- Add UDF benchmark SQL queries (1–21) 
+- Add the required UDFs under the folder udfs/ (including scalar/, aggregate/, table/).
+- Create the required scripts:
+1."db_name"_config.sh
+2."db_name"_setup.sh
+3.create_database.sh
+4.create_schema.sh
+5.load_schema.sh
+6.run_experiment.sh
+- Test the integration using the run_experiment.sh script
