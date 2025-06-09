@@ -151,7 +151,7 @@ Variables in the Configuration file for PySpark:
 "./automations/ubuntu_requirements.sh"
 
 # 4. Install Python3 Dependencies:
-"$PYTHONEXEC" -m pip install -r $PWD'/automations/requirements.txt --upgrade  --user
+"$PYTHONEXEC" -m pip install -r $PWD/automations/requirements.txt --upgrade  --user
 
 # 5. Install, Set Up, and Deploy on Database Engines: : PostgreSQL, MonetDB, DuckDB, SQLite, PySpark
 The "./automations/deploy_udfbench.sh" script handles the download, installation, deployment of experiments for the following database systems: PostgreSQL, MonetDB, DuckDB, SQLite, Pyspark. It also allows you to select parameters that are compatible with your system.
@@ -182,7 +182,7 @@ Example Usage:
 ./automations/deploy_udfbench.sh ssd yes no yes postgres monetdb duckdb sqlite sqlitevtab pyspark
 
 - Create and deploy the databases to pre-installed data engines:
-./automations/deploy_udfbench.sh ssd yes no no  postgres monetdb duckdb sqlite sqlitevtab pyspark
+./automations/deploy_udfbench.sh ssd yes no no postgres monetdb duckdb sqlite sqlitevtab pyspark
 
 
 # 6. Run Experiment on Database Engines: : PostgreSQL, MonetDB, DuckDB, SQLite, SQLitevtab, PySpark
@@ -202,26 +202,26 @@ Parameter Descriptions:
 4.	Cache: Select between `cold` (fresh start) or `hot` (preloaded) cache scenarios.
 5.	Disk: Select between ‘ssd’, ‘mem’ (memory), or ‘hdd’ for storage
 6.	Collectl: Select ‘true’ to monitor system resource usage (CPU, memory, disk, etc.) ,else ‘false’ to disable
-7.	Query (Optimal): Select one or more query numbers between 1 and 21. (By default, if no query number is provided, all queries (1-21) stored in the folder engines/"$system"/queries/ will be run)
+7.	Query (Optional): Select one or more query numbers between 1 and 21. (By default, if no query number is provided, all queries (1-21) stored in the folder engines/"$system"/queries/ will be run)
 
 Examples: 
 Scenario 1 – Postgres with Large Dataset: The script will run all the SQL queries [1-21] in the folder engines/postgres/queries on the PostgreSQL system, using the large dataset, with default threads, cold cache, on SSD storage, without wordload, and without collectl 
-(e.g.,  ./automations/run_udfbench.sh postgres l t0 cold ssd false false)
+(e.g.,  ./automations/run_udfbench.sh postgres l t0 cold ssd false)
 
 Scenario 2 – Monetdb with Parallelism: The script will run Query 2 on MonetDB system,  using the medium dataset, with 2 thread, cold cache, on SSD storage, without wordload, and with collectl 
-(e.g.,  ./automations/run_udfbench.sh monetdb m t2 cold ssd false true 2)
+(e.g.,  ./automations/run_udfbench.sh monetdb m t2 cold ssd true 2)
 
 Scenario 3 – DuckDB with Cache State: The script will run Queries 10-11 on the DuckDB system,  using the small dataset, with 1 thread, hot cache, on SSD storage, without wordload, and without collectl 
-(e.g.,  ./automations/run_udfbench.sh duckdb s t1  hot ssd false false 10 11)
+(e.g.,  ./automations/run_udfbench.sh duckdb s t1 hot ssd false 10 11)
 
 Scenario 4a – Sqlite with Storage: The script will run Query 1 on SQLite system,  using the large dataset, with default thread, hot cache, on MEM storage, without wordload, and without collectl 
-(e.g.,  ./automations/run_udfbench.sh sqlite3 l t0  hot mem false false 1)
+(e.g.,  ./automations/run_udfbench.sh sqlite3 l t0 hot mem false 1)
 
 Scenario 4b – Sqlitevtab with Storage: The script will run Query 2 on SQLitevtab system,  using the large dataset, with default thread, cold cache, on HDD storage, without wordload, and with collectl 
-(e.g.,  ./automations/run_udfbench.sh sqlitevtab l t0  cold hdd false true 2)
+(e.g.,  ./automations/run_udfbench.sh sqlitevtab l t0 cold hdd true 2)
 
 Scenario 6 – Monetdb with Resources: The script will run Queries 1- 7 on MonetDB system,  using the large dataset, with default threads, cold cache, on SSD storage, without wordload, and with collectl 
-(e.g.,  ./automations/run_udfbench.sh monetdb l  t0 cold ssd false true 1 2 3 4 5 6 7)
+(e.g.,  ./automations/run_udfbench.sh monetdb l t0 cold ssd true 1 2 3 4 5 6 7)
 
 
 # 7. Collect Experiment Results to a CSV file across all systems:
