@@ -13,9 +13,10 @@ try:
 except ImportError:
     # Python 2.6
     from lib.collections26 import OrderedDict
-
-break_inversion_subquery = re.compile(r"""\s*((?:(?:(?:'[^']*?'|\w+:[^\s]+)\s*)*))((?i)of\s|from\s|)(.*?)\s*$""",
-                                      re.DOTALL | re.UNICODE)
+break_inversion_subquery = re.compile(
+    r"""\s*((?:(?:(?:'[^']*?'|\w+:[^\s]+)\s*)*))(of\s|from\s|)(.*?)\s*$""",
+    re.DOTALL | re.UNICODE | re.IGNORECASE
+)
 find_parenthesis = re.compile(r"""\s*\((.*)\)\s*$""", re.DOTALL | re.UNICODE)
 viewdetector = re.compile(r'(?i)\s*create\s+(?:temp|temporary)\s+view\s+', re.DOTALL | re.UNICODE)
 inlineop = re.compile(r'\s*/\*\*+[\s\n]*((?:def\s+|class\s+).+)[^*]\*\*+/', re.DOTALL | re.UNICODE)
