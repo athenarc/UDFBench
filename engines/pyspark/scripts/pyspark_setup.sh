@@ -19,8 +19,8 @@ wget https://archive.apache.org/dist/spark/spark-3.5.5/spark-3.5.5.tgz
 tar -xvzf spark-3.5.5.tgz
 
 
-echo "export SPARK_HOME=$PWD/spark-3.5.5" >> ~/.bashrc
-echo "export PATH=\$SPARK_HOME/bin:\$SPARK_HOME/sbin:\$PATH" >> ~/.bashrc
+# echo "export SPARK_HOME=$PWD/spark-3.5.5" >> ~/.bashrc
+# echo "export PATH=\$SPARK_HOME/bin:\$SPARK_HOME/sbin:\$PATH" >> ~/.bashrc
 
-source ~/.bashrc
+# source ~/.bashrc
 cd $CURRENT

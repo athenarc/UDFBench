@@ -100,9 +100,12 @@ for query_file in "${arr[@]}"; do
 
     if  [ $COLLECTL = "true" ]; then 
         collectl -f "$PYSPARKRESULTSPATH/collectl/$filename" -scdnm -F0 -i.1 &
+        COLLECTL_PID=$!
     fi
     "$PYTHONEXEC" "$PYSPARKPATH" --pyspark-schema "$PYSPARKSCRIPTS" --pyspark-loads "$PYSPARKSCRIPTS" --pyspark-parquet "$PARQUETPATH/$DATAB" --pyspark-udfs "$PYSPARKUDFS"  --pyspark-sql  "$query_file"  &> "$PYSPARKRESULTSPATH/experiments/$filename".txt
-
+    if  [ $COLLECTL = "true" ]; then 
+        kill $COLLECTL_PID
+    fi
     mv "$query_file.bak" "$query_file"
 
     
