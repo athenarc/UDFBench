@@ -91,8 +91,12 @@ for query_file in "${arr[@]}"; do
 
     if [ $COLLECTL = "true" ]; then 
         collectl -f "$SQLITERESULTSPATH/collectl/$filename" -scdnm -F0 -i.1 &
+        COLLECTL_PID=$!
     fi
     { "$PYTHONEXEC" "$SQLITEPATH"  "$SQLITEDBPATH/$DATAB".db  "$query_file" "$SQLITEUDFS/scalar" "$SQLITEUDFS/aggregate"; } &> "$SQLITERESULTSPATH/experiments/$filename".txt
+    if  [ $COLLECTL = "true" ]; then 
+        kill $COLLECTL_PID
+    fi
 
        
 done

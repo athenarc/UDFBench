@@ -91,11 +91,15 @@ for query_file in "${arr[@]}"; do
 
     if  [ $COLLECTL = "true" ]; then 
         collectl -f "$DUCKDBRESULTSPATH/collectl/$filename" -scdnm -F0 -i.1 &
+        COLLECTL_PID=$!
     fi
     if [ $NTHREADS -eq 0 ]; then
         { "$PYTHONEXEC" "$DUCKDBEXEC" --duckdb-dbfile "$DUCKDBPATH/$DATAB".db  --duckdb-udfs "$DUCKDBUDFS" --duckdb-external "$EXTERNALPATH/$DATAB" --duckdb-sql "$query_file" ; } &> "$DUCKDBRESULTSPATH/experiments/$filename.txt"
     else
         { "$PYTHONEXEC" "$DUCKDBEXEC" --duckdb-dbfile "$DUCKDBPATH/$DATAB".db  --duckdb-udfs "$DUCKDBUDFS" --duckdb-external "$EXTERNALPATH/$DATAB" --duckdb-sql "$query_file" --nthreads $NTHREADS ; } &> "$DUCKDBRESULTSPATH/experiments/$filename.txt"
+    fi
+    if  [ $COLLECTL = "true" ]; then 
+        kill $COLLECTL_PID
     fi
     
 done

@@ -100,9 +100,13 @@ for query_file in "${arr[@]}"; do
     
     if [ $COLLECTL = "true" ]; then 
         collectl -f "$SQLITEVTABRESULTSPATH/collectl/$filename" -scdnm -F0 -i.1 &
+        COLLECTL_PID=$!
     fi
     { "$PYTHONEXEC" "$SQLITEVTABPATH" -d "$SQLITEVTABDBPATH/$DATAB".db -f "$query_file"; } &> "$SQLITEVTABRESULTSPATH/experiments/$filename".txt
-    
+    if  [ $COLLECTL = "true" ]; then 
+        kill $COLLECTL_PID
+    fi
+
     mv "$query_file.bak" "$query_file"
 
        
