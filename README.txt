@@ -4,6 +4,8 @@
 find . -type f -name "*.sh" -exec  chmod +x {} \;
 
 # 2. Update the configuration file as needed, then apply the changes:
+"./automations/config_udfbench.sh"
+
 Before running the benchmark, or executing any of the  scripts, you need to configure a set of environment variables, such as UDFs, queries, executables, databases storage paths.
 These variables should be updated based on your system’s set up and directory structure.
 By default, the configuration files in the engines folder ("$system"_config.sh) are set up to create all the required systems from the beginning.
