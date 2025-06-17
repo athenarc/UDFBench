@@ -41,7 +41,7 @@ The UDFBench schema comprises 2 core tables: `artifacts` and `projects`. These c
 
 The schema includes fields of various data types and sizes, and allows building queries with expensive relational operators such as aggregation, grouping, and join paths of moderate length (up to 5).
 
-Note that the UDFBench schema contains denormalized features such as nested attributes (JSON list, dict) and the UDFBench queries connect to external denormalized files, hence, enabling testing complex UDF functionality beyond relational. The external files contain information from sources such as arxiv, crossred, pubmed, etc. and are in various formats such as csv, txt, xml, etc.
+Note that the UDFBench schema contains denormalized features such as nested attributes (JSON list, dict) and the UDFBench queries connect to external denormalized files, hence, enabling testing complex UDF functionality beyond relational. The external files contain information from sources such as arxiv, crossred, pubmed, etc. and are in various formats such as csv, txt, xml, json, etc.
 
 The ER-diagram of the UDFBench schema is as follows:
 
