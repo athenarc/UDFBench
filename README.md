@@ -18,7 +18,7 @@ Each dataset consists of **10 CSV files** with the same schema:
 
 <img src="https://github.com/johnfouf/udfbench/blob/main/figs/schema.png" alt="Dataset Schema" width="1000px">
 
-Additionally, external files used in queries are available in the same Zenodo repository.  
+Additionally, external files in csv, xml and json format used in queries 6, 7, 13, 15 and 18 are available in the same dataset from zenodo in the `files` folder.  
 
 ---
 
