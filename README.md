@@ -325,7 +325,7 @@ UDFBench comprises 42 UDFs, categorized as follows:
 
 - **24 Scalar UDFs**  
 - **4 Aggregate UDFs**  
-- **14 Table UDFs**, covering various subtypes  
+- **14 Table UDFs**, covering various subtypes (see the UDFBench paper for details)  
 
 The UDFs are implemented for all supported engines and can be found in the `udfs` directory under each `engine` directory, organized by their types.  
 
