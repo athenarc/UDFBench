@@ -498,7 +498,9 @@ These customizable settings enable users to tailor experiments to specific perfo
 For the experiments presented in the UDFBench paper, we used the following software versions: 
 MonetDB 5 server(v11.50.0), PostgreSQL (17), DuckDB (1.0.0), SQLite3 (3.37.2), Spark/PySpark (3.5.5), Python (3.10.12), gcc (11.4.0), PyPy (7.3.12),
 CFFI (1.15.1), APSW (3.40.0.0), NumPy (1.26.4), Pandas (2.2.0),
-PyArrow(18.0.0), Scikit-learn (1.4.0), NLTK (3.8.1), Radon 6.0.1, 
+PyArrow(18.0.0), Scikit-learn (1.4.0), NLTK (3.8.1), Radon 6.0.1. 
+
+
 
 **Note**: If these experiments run on different software versions the results may vary and certain features may not be supported.
 
