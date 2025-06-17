@@ -24,14 +24,14 @@ Additionally, external files used in queries are available in the same Zenodo re
 
 ## Queries  
 
-UDFBench comprises 21 SQL queries with UDFs implemented in 4 database engines:
+UDFBench comprises 21 SQL queries with UDFs implemented in 5 database engines:
   - **MonetDB**  
   - **PostgreSQL**  
   - **DuckDB**  
   - **SQLite**
   - **PySpark**
 
-You can find the queries organized by engine in the `queries` folder.  
+You can find the queries in the `queries` folder per engine.  
 
 ---
 
@@ -43,7 +43,7 @@ UDFBench comprises 42 UDFs, categorized as follows:
 - **4 Aggregate UDFs**  
 - **14 Table UDFs**, covering various subtypes  
 
-The UDFs are implemented for all supported engines and are organized by type and engine in the `udfs` folder.  
+The UDFs are implemented for all supported engines and are organized by type in the `udfs` folder of each engine.  
 
 ---
 
