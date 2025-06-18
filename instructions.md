@@ -160,7 +160,6 @@ Aggregate results into a CSV:
 │   ├── run_udfbench.sh
 │   ├── ubuntu_requirements.sh
 │   └── requirements.txt
-├── databases/
 ├── dataset/
 ├── engines/
 │   ├── postgres/
@@ -169,7 +168,6 @@ Aggregate results into a CSV:
 │   ├── sqlite/
 │   ├── sqlitevtab/
 │   └── pyspark/
-├── results/
 └── README.md
 ```
 
