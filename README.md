@@ -25,7 +25,7 @@ If you use UDFBench, please cite the relevant publication:
 
 ##  How to Use  
 
-For installation and execution instructions, please refer to the **[README.txt](instructions.md)** file in the repository.  
+For installation and execution instructions, please refer to the **[instructions.md](instructions.md)** file in the repository.  
 
 ---
 
