@@ -27,7 +27,10 @@ Set variables such as UDF paths, queries, database storage directories, etc., ac
 - `DATASETSPATHSSD`, `DATASETSPATHMEM`, `DATASETSPATHHDD`: Paths to folders containing CSV and Parquet files for loading.
 
 
-#### Example Configuration Variables for Postgres
+####  Variables for Specific engines
+
+Engine specific variables should be defined per engine in the `config.sh` file under the `scripts` folder
+Here follows an example:
 
 ##### PostgreSQL
 
