@@ -12,7 +12,7 @@ find . -type f -name "*.sh" -exec chmod +x {} \;
 ```
 
 ### 2. Configure Environment
-Update the configuration in:
+Update the configuration and apply the updates:
 ```bash
 ./automations/config_udfbench.sh
 ```
@@ -64,9 +64,9 @@ Use the following script to deploy:
 
 ### Parameters:
 - `disk`: `ssd`, `mem`, or `hdd`
-- `deploy`: `yes` or `no`
-- `download`: `yes` or `no`
-- `install`: `yes` or `no`
+- `deploy`: `yes` or `no` to skip deployment
+- `download`: `yes` or `no` to skip dataset download
+- `install`: `yes` or `no` to skip data engine installation
 - `system`: One or more of `postgres`, `monetdb`, `duckdb`, `sqlite`, `sqlitevtab`, `pyspark`
 
 ### Example:
@@ -90,7 +90,7 @@ Execute benchmarks using:
 - `cache`: `hot` or `cold`
 - `disk`: `ssd`, `mem`, `hdd`
 - `collectl`: `true` or `false`
-- `queries`: Optional list (1–21)
+- `queries`: Optional list (1–21), If not selected, all queries will run. 
 
 ### Example Scenarios:
 
