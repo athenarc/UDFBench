@@ -18,7 +18,7 @@ Update the configuration and apply the updates:
 ```
 Set variables such as UDF paths, queries, database storage directories, etc., according to your system setup. Default config files are provided per engine.
 
-<details>
+
 
 
 #### Common Variables:
@@ -26,9 +26,8 @@ Set variables such as UDF paths, queries, database storage directories, etc., ac
 - `EXTERNALPATHSSD`, `EXTERNALPATHMEM`, `EXTERNALPATHHDD`: Paths to CSV/XML/JSON files on different storage media.
 - `DATASETSPATHSSD`, `DATASETSPATHMEM`, `DATASETSPATHHDD`: Paths to folders containing CSV and Parquet files for loading.
 
-</details>
 
-<details>
+
 
 
 Includes detailed variable definitions for:
@@ -39,7 +38,7 @@ Includes detailed variable definitions for:
 - SQLite / SQLitevtab
 - PySpark
 
-</details>
+
 
 ---
 
