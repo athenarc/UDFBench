@@ -27,20 +27,43 @@ Set variables such as UDF paths, queries, database storage directories, etc., ac
 - `DATASETSPATHSSD`, `DATASETSPATHMEM`, `DATASETSPATHHDD`: Paths to folders containing CSV and Parquet files for loading.
 
 
+#### Example Configuration Variables for Postgres
 
+##### PostgreSQL
 
+- `PSQLPATH`: Path to the PostgreSQL `psql` tool  
+  _Example_: `export PSQLPATH=$PWD'/databases/postgres/bin/psql'`
 
-Includes detailed variable definitions for:
+- `POSTGRESPATH`: Storage directory  
+  _Example_: `export POSTGRESPATH=$PWD'/databases/postgres'`
 
-- PostgreSQL
-- MonetDB
-- DuckDB
-- SQLite / SQLitevtab
-- PySpark
+- `PSQLSSDPORT`: SSD port  
+  _Example_: `export PSQLSSDPORT="50007"`
 
+- `PSQLHDDPORT`: HDD port (optional)  
+  _Example_: `export PSQLHDDPORT="50009"`
 
+- `PSQLMEMPORT`: In-memory port  
+  _Example_: `export PSQLMEMPORT="50010"`
+
+- `PSQLUSER`: PostgreSQL user  
+  _Example_: `export PSQLUSER=$USER`
+
+- `POSTGRESQUERIES`: Path to queries  
+  _Example_: `export POSTGRESQUERIES=$PWD'/engines/postgres/queries'`
+
+- `POSTGRESUDFS`: Path to UDFs  
+  _Example_: `export POSTGRESUDFS=$PWD/engines/postgres/udfs`
+
+- `POSTGRESSCRIPTS`: Path to scripts  
+  _Example_: `export POSTGRESSCRIPTS=$PWD'/engines/postgres/scripts'`
+
+- `POSTGRESRESULTSPATH`: Logs/results path  
+  _Example_: `export POSTGRESRESULTSPATH=$PWD'/results/logs/postgres'`
 
 ---
+
+
 
 ### 3. Install Required Ubuntu Packages
 ```bash
