@@ -25,7 +25,7 @@ If you use UDFBench, please cite the relevant publication:
 
 ##  How to Use  
 
-For installation and execution instructions, please refer to the **[README.txt](README.txt)** file in the repository.  
+For installation and execution instructions, please refer to the **[README.txt](instructions.md)** file in the repository.  
 
 ---
 
@@ -53,7 +53,7 @@ UDFBench contains four dataset sizes: `tiny`, `small`, `medium`, and `large`.
 
 The `tiny` dataset is intended for deployment testing and it is included in this repository in the `dataset` directory. 
 
-The other three sizes are hosted in **[Zenodo](https://zenodo.org/records/14260428)** and can be automatically deployed into the UDFBench schema using automated scripts (see **[README.txt](README.txt)**).
+The other three sizes are hosted in **[Zenodo](https://zenodo.org/records/14260428)** and can be automatically deployed into the UDFBench schema using automated scripts (see **[instructions.md](instructions,md)**).
 
 Each dataset consists of **10 CSV files** corresponding to the 10 UDFBench schema tables. 
 
