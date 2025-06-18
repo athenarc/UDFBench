@@ -94,7 +94,7 @@ Use the following script to deploy:
 - `install`: `yes` or `no` to skip data engine installation
 - `system`: One or more of `postgres`, `monetdb`, `duckdb`, `sqlite`, `sqlitevtab`, `pyspark`
 
-### Example:
+### Examples:
 Download the necessary datasets, install the systems, create and deploy the databases across all systems:
 ```bash
 ./automations/deploy_udfbench.sh ssd yes yes yes postgres monetdb duckdb sqlite sqlitevtab pyspark
