@@ -19,7 +19,7 @@ Update the configuration and apply the updates:
 Set variables such as UDF paths, queries, database storage directories, etc., according to your system setup. Default config files are provided per engine.
 
 <details>
-<summary>Click to expand common environment variables</summary>
+
 
 #### Common Variables:
 - `PYTHONEXEC`: Path to Python executable (e.g., `python3.10`)
@@ -29,7 +29,7 @@ Set variables such as UDF paths, queries, database storage directories, etc., ac
 </details>
 
 <details>
-<summary>Click to expand per-system configuration</summary>
+
 
 Includes detailed variable definitions for:
 
