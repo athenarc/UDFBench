@@ -53,7 +53,7 @@ UDFBench contains four dataset sizes: `tiny`, `small`, `medium`, and `large`.
 
 The `tiny` dataset is intended for deployment testing and it is included in this repository in the `dataset` directory. 
 
-The other three sizes are hosted in **[Zenodo](https://zenodo.org/records/14260428)** and can be automatically deployed into the UDFBench schema using automated scripts (see **[instructions.md](instructions,md)**).
+The other three sizes are hosted in **[Zenodo](https://zenodo.org/records/14260428)** and can be automatically deployed into the UDFBench schema using automated scripts (see **[instructions.md](instructions.md)**).
 
 Each dataset consists of **10 CSV files** corresponding to the 10 UDFBench schema tables. 
 
@@ -478,7 +478,7 @@ UDFBench is a flexible framework for conducting experiments across different dat
    - Use **[collectl](https://collectl.sourceforge.net/)** to monitor system resource usage (CPU, memory, disk, etc.).  
    - Store the results for post-experiment analysis.  
 
-More details on how to orchestrate and run an experiment can be found in the **[instructiond.md](instructions.md)** file.
+More details on how to orchestrate and run an experiment can be found in the **[instructions.md](instructions.md)** file.
 
 <!--
 ## What Experiments Does UDFBench Offer?  
