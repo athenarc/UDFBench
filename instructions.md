@@ -23,7 +23,7 @@ Set variables such as UDF paths, queries, database storage directories, etc., ac
 
 #### Common Variables:
 - `PYTHONEXEC`: Path to Python executable (e.g., `python3.10`)
-- `EXTERNALPATHSSD`, `EXTERNALPATHMEM`, `EXTERNALPATHHDD`: Paths to CSV/XML/JSON files on different storage media.
+- `EXTERNALPATHSSD`, `EXTERNALPATHMEM`, `EXTERNALPATHHDD`: Paths to external CSV/XML/JSON files on different storage media.
 - `DATASETSPATHSSD`, `DATASETSPATHMEM`, `DATASETSPATHHDD`: Paths to folders containing CSV and Parquet files for loading.
 
 
@@ -80,7 +80,7 @@ $PYTHONEXEC -m pip install -r $PWD/automations/requirements.txt --upgrade --user
 
 ---
 
-## 🚀 Deploy Database Engines
+## 🚀 Install, Setup and Deploy Database Engines
 
 Use the following script to deploy:
 ```bash
@@ -95,10 +95,14 @@ Use the following script to deploy:
 - `system`: One or more of `postgres`, `monetdb`, `duckdb`, `sqlite`, `sqlitevtab`, `pyspark`
 
 ### Example:
+Download the necessary datasets, install the systems, create and deploy the databases across all systems:
 ```bash
 ./automations/deploy_udfbench.sh ssd yes yes yes postgres monetdb duckdb sqlite sqlitevtab pyspark
 ```
-
+Run this once to download datasets from zenodo without installing any engine:
+```bash
+./automations/deploy_udfbench.sh ssd no yes no 
+```
 ---
 
 ## 🧪 Run Experiments
