@@ -4,6 +4,29 @@ This repository provides scripts and configurations to install, configure, and r
 
 ---
 
+## 📁 Repository Structure
+
+```
+.
+├── automations/
+│   ├── config_udfbench.sh
+│   ├── deploy_udfbench.sh
+│   ├── run_udfbench.sh
+│   ├── ubuntu_requirements.sh
+│   └── requirements.txt
+├── dataset/
+├── engines/
+│   ├── postgres/
+│   ├── monetdb/
+│   ├── duckdb/
+│   ├── sqlite/
+│   ├── sqlitevtab/
+│   └── pyspark/
+└── README.md
+```
+
+---
+
 ## 🔧 Installation Steps
 
 ### 1. Grant Execute Permissions
@@ -150,29 +173,6 @@ Aggregate results into a CSV:
 ### Example:
 ```bash
 ./collectl_results.sh $RESULTSPATH/results.csv
-```
-
----
-
-## 📁 Folder Structure
-
-```
-.
-├── automations/
-│   ├── config_udfbench.sh
-│   ├── deploy_udfbench.sh
-│   ├── run_udfbench.sh
-│   ├── ubuntu_requirements.sh
-│   └── requirements.txt
-├── dataset/
-├── engines/
-│   ├── postgres/
-│   ├── monetdb/
-│   ├── duckdb/
-│   ├── sqlite/
-│   ├── sqlitevtab/
-│   └── pyspark/
-└── README.md
 ```
 
 ---
