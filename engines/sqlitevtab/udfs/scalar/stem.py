@@ -1,5 +1,12 @@
 import re
 
+r_exp = re.compile(r"[^aeiouy]*[aeiouy]+[^aeiouy](\w*)")
+ewss_exp1 = re.compile(r"^[aeiouy][^aeiouy]$")
+ewss_exp2 = re.compile(r".*[^aeiouy][aeiouy][^aeiouywxY]$")
+ccy_exp = re.compile(r"([aeiouy])y")
+s1a_exp = re.compile(r"[aeiouy].")
+s1b_exp = re.compile(r"[aeiouy]")
+
 def stem(input):
     # Copyright (c) 2008 Michael Dirolf (mike at dirolf dot com)
     
