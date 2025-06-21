@@ -15,7 +15,7 @@ def combinations(val,numcomb):
         try:
             name_list = json.loads(jval)
             for name_per in itertools.combinations(name_list, N):
-                yield [json.dumps(name_i) for name_i in name_per]
+                yield json.dumps([name_per_i for name_per_i in name_per])
 
         except:
             yield('[]')
@@ -23,7 +23,7 @@ def combinations(val,numcomb):
     yield ('pairs',)
     for row in jcombinations(val,numcomb):
             # print(f"Yielding:  {row}")
-            yield(row)
+            yield(row,)
 
 
 
