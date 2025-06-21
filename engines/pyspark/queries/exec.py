@@ -54,10 +54,8 @@ def createfunctions(spark,UDFs,UDAFs,UDTFs):
         spark.udf.register("jsort", udf(UDFs["jsort"].jsort,  StringType()))
         spark.udf.register("jsortvalues", udf(UDFs["jsortvalues"].jsortvalues,  StringType()))
         spark.udf.register("keywords", udf(UDFs["keywords"].keywords,  StringType()))
-        spark.udf.register("keywords_v2", udf(UDFs["keywords_v2"].keywords_v2,  StringType()))
         spark.udf.register("log_10", udf(UDFs["log_10"].log_10,  DoubleType()))
         spark.udf.register("lowerize", udf(UDFs["lowerize"].lowerize,  StringType()))
-        spark.udf.register("lowerize_v2", udf(UDFs["lowerize_v2"].lowerize_v2,  StringType()))
         spark.udf.register("removeshortterms", udf(UDFs["removeshortterms"].removeshortterms,  StringType()))
         spark.udf.register("stem", udf(UDFs["stem"].stem,  StringType()))
         
