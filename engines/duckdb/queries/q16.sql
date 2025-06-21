@@ -17,17 +17,17 @@ WITH pairs(pubid, pubdate, projectstart, projectend,
 )
 
 SELECT funder, class, projectid,
-  SUM(CASE WHEN cleandate_v2(pubdate) between pstartcleaned and pendcleaned 
+  SUM(CASE WHEN cleandate(pubdate) between pstartcleaned and pendcleaned 
       THEN 1 ELSE NULL END) AS authors_during,
-  SUM(CASE WHEN cleandate_v2(pubdate) < pstartcleaned 
+  SUM(CASE WHEN cleandate(pubdate) < pstartcleaned 
       THEN 1 ELSE NULL END) AS authors_before,
-  SUM(CASE WHEN cleandate_v2(pubdate) > pendcleaned 
+  SUM(CASE WHEN cleandate(pubdate) > pendcleaned 
       THEN 1 ELSE NULL END) AS authors_after
 FROM (
     SELECT  projectpairs.funder, projectpairs.class, 
             projectpairs.projectid,
-            cleandate_v2(projectpairs.projectstart) AS pstartcleaned, 
-            cleandate_v2(projectpairs.projectend) AS pendcleaned, 
+            cleandate(projectpairs.projectstart) AS pstartcleaned, 
+            cleandate(projectpairs.projectend) AS pendcleaned, 
             pairs.authorpair, 
             pairs.pubdate   
     FROM 
