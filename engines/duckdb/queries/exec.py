@@ -34,7 +34,6 @@ def createfunctions(con,UDFs,UDAFs,UDTFs):
         con.create_function('addnoise', UDFs.addnoise)
         con.create_function('clean', UDFs.clean, [VARCHAR], VARCHAR)
         con.create_function('cleandate', UDFs.cleandate, [VARCHAR], VARCHAR)
-        con.create_function('cleandate_v2', UDFs.cleandate_v2, [VARCHAR], VARCHAR,type='arrow')
         con.create_function('converttoeuro', UDFs.converttoeuro, [DOUBLE,VARCHAR],DOUBLE )
         con.create_function('extractclass', UDFs.extractclass, [VARCHAR], VARCHAR)
         con.create_function('extractcode', UDFs.extractcode, [VARCHAR], VARCHAR)
@@ -53,10 +52,8 @@ def createfunctions(con,UDFs,UDAFs,UDTFs):
         con.create_function('jsort', UDFs.jsort, [VARCHAR],VARCHAR )
         con.create_function('jsortvalues', UDFs.jsortvalues, [VARCHAR],VARCHAR )
         con.create_function('keywords', UDFs.keywords, [VARCHAR], VARCHAR)
-        con.create_function('keywords_v2', UDFs.keywords_v2, [VARCHAR], VARCHAR)
         con.create_function('log_10', UDFs.log_10, [DOUBLE], DOUBLE)
         con.create_function('lowerize', UDFs.lowerize, [VARCHAR], VARCHAR)
-        con.create_function('lowerize_v2', UDFs.lowerize_v2, [VARCHAR], VARCHAR)
         con.create_function('removeshortterms', UDFs.removeshortterms, [VARCHAR], VARCHAR)
         con.create_function('stem', UDFs.stem, [VARCHAR], VARCHAR)
 
