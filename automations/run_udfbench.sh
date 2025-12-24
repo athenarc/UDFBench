@@ -89,7 +89,12 @@ if [ "$#" -gt 0 ]; then
         if [ -f "$query_file" ]; then
             sql_files+=("$(realpath "$query_file")") 
         else
-            echo "Warning: '$arg' is not a valid query number. Skipping."
+            query_file="$PWD/engines/$SYSTEM/queries/q$arg.py"
+            if [ -f "$query_file" ]; then
+                sql_files+=("$(realpath "$query_file")")
+            else
+                echo "Warning: '$arg' is not a valid query number. Skipping."
+            fi
         fi
     done
 else
@@ -103,10 +108,16 @@ else
         sql_files+=("$full_path")  
     done < <(find "$TARGET_DIR" -maxdepth 1 -type f -name "*.sql" -print0)
 
+    if [ ${#sql_files[@]} -eq 0 ]; then
+        # echo "No .sql files found. Checking for q*.py files..."
+        while IFS= read -r -d $'\0' file; do
+            sql_files+=("$(realpath "$file")")
+        done < <(find "$TARGET_DIR" -maxdepth 1 -type f -name "q*.py" -print0)
+    fi
 fi
 
 if [ ${#sql_files[@]} -eq 0 ]; then
-    echo "No .sql files found in the directory: $TARGET_DIR"
+    echo "No .sql or .py files found in the directory: $TARGET_DIR"
     exit 1
 fi
 

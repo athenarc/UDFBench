@@ -12,10 +12,10 @@ DATABASE="$1"
 shift
 
 
-if [ ! -d "$PYSPARKRESULTSPATH" ]; then
-    mkdir -p "$PYSPARKRESULTSPATH"
-    mkdir -p "$PYSPARKRESULTSPATH/experiments"
-    mkdir -p "$PYSPARKRESULTSPATH/collectl"
+if [ ! -d "$RAYRESULTSPATH" ]; then
+    mkdir -p "$RAYRESULTSPATH"
+    mkdir -p "$RAYRESULTSPATH/experiments"
+    mkdir -p "$RAYRESULTSPATH/collectl"
 fi
 
 DATAB="tiny"
@@ -65,9 +65,6 @@ shift
 PYTHONEXEC="$1"
 shift
 
-export PYSPARK_DRIVER_PYTHON=$PYTHONEXEC
-export PYSPARK_PYTHON=$PYTHONEXEC
-
 arr=("$@")
 
 # Iterate over each element in the array
@@ -82,6 +79,14 @@ for query_file in "${arr[@]}"; do
     sudo sync; sudo sh -c 'echo 2 > /proc/sys/vm/drop_caches'
     sudo sync; sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches'
     echo 3 | sudo  tee /proc/sys/vm/drop_caches
+    sudo rm -rf "$RAYQUERIES/__pycache__"
+    sudo rm -rf "$RAYSCRIPTS/__pycache__"
+    sudo rm -rf "$RAYUDFS/scalar/__pycache__"
+    sudo rm -rf "$RAYUDFS/aggregate/__pycache__"
+    sudo rm -rf "$RAYUDFS/table/__pycache__" 
+    # if [ ! -z "$RAYTEMPDIR" ]; then
+    #     sudo rm -r "$RAYTEMPDIR/*"
+    # fi
     sudo swapoff -a
     sudo swapon -a
 
@@ -89,36 +94,28 @@ for query_file in "${arr[@]}"; do
   fi
   for ((i = 1; i <= $repeats; i++)); do
     query_number="${query_file##*/q}"
-    query_number="${query_number%.sql}"
-    filename="$DATABASE"-"$query_number"-t"$NTHREADS"-"$CACHE"-"$DISK"
-    rm_output=$(rm -r "$PYSPARKRESULTSPATH/collectl/$filename"* 2>&1)
+    query_number="${query_number%.py}"
+    filename="ray-$DATABASE"-"$query_number"-t"$NTHREADS"-"$CACHE"-"$DISK"
+    rm_output=$(rm -r "$RAYRESULTSPATH/collectl/$filename"* 2>&1)
 
-    sed -i.bak -e "s|[^']*\.txt'|"$EXTERNALPATH/$DATAB"/&|g" \
-    -e "s|[^']*\.csv'|"$EXTERNALPATH/$DATAB"/&|g" -e "s|[^']*\.xml'|"$EXTERNALPATH/$DATAB"/&|g" -e "s|[^']*\.json'|"$EXTERNALPATH/$DATAB"/&|g" "$query_file"
     
 
-
     if  [ $COLLECTL = "true" ]; then 
-        collectl -f "$PYSPARKRESULTSPATH/collectl/$filename" -scdnm -F0 -i.1 &
+        collectl -f "$RAYRESULTSPATH/collectl/$filename" -scdnm -F0 -i.1 &
         COLLECTL_PID=$!
     fi
+
     if [ $NTHREADS -eq 0 ]; then
-        "$PYTHONEXEC" "$PYSPARKPATH" --pyspark-schema "$PYSPARKSCRIPTS" --pyspark-loads "$PYSPARKSCRIPTS" --pyspark-parquet "$PARQUETPATH/$DATAB" --pyspark-udfs "$PYSPARKUDFS"  --pyspark-sql  "$query_file"  &> "$PYSPARKRESULTSPATH/experiments/$filename".txt
+        { "$PYTHONEXEC" "$RAYBEXEC" --ray-parquet "$PARQUETPATH/$DATAB" --temp-dir "$RAYTEMPDIR"  --ray-external "$EXTERNALPATH/$DATAB"  --ray-query "$query_number" ; } &> "$RAYRESULTSPATH/experiments/$filename.txt"
     else
-        CPU_LIST=$(seq -s, 0 $((NTHREADS - 1)))
-
-        taskset -c $CPU_LIST "$PYTHONEXEC" "$PYSPARKPATH" --pyspark-schema "$PYSPARKSCRIPTS" --pyspark-loads "$PYSPARKSCRIPTS" --pyspark-parquet "$PARQUETPATH/$DATAB" --pyspark-udfs "$PYSPARKUDFS"  --pyspark-sql  "$query_file"  &> "$PYSPARKRESULTSPATH/experiments/$filename".txt
-
+        { "$PYTHONEXEC" "$RAYBEXEC"  --ray-parquet "$PARQUETPATH/$DATAB"   --temp-dir "$RAYTEMPDIR"    --ray-external "$EXTERNALPATH/$DATAB" --ray-query "$query_number" --nthreads $NTHREADS ; } &> "$RAYRESULTSPATH/experiments/$filename.txt"
     fi
     if  [ $COLLECTL = "true" ]; then 
         kill $COLLECTL_PID
     fi
-    mv "$query_file.bak" "$query_file"
-
-    
 done
     if  [ $COLLECTL = "true" ]; then 
-        collectl -p $PYSPARKRESULTSPATH/collectl/$filename*.gz -scdnm -P  > $PYSPARKRESULTSPATH/collectl/$filename.csv
+        collectl -p $RAYRESULTSPATH/collectl/$filename*.gz -scdnm -P  > $RAYRESULTSPATH/collectl/$filename.csv
     fi
 
    

@@ -27,6 +27,24 @@ import warnings
 warnings.filterwarnings("ignore")
 
 import random
+import psutil
+
+def get_cpu_time_in_ms():
+    parent = psutil.Process(os.getpid())
+    total = 0.0
+    try:
+        pt= parent.cpu_times()
+        total = pt.user + pt.system
+        for child in parent.children(recursive=True):
+            try:
+                ct = child.cpu_times()
+                total += ct.user + ct.system
+            except (psutil.NoSuchProcess, psutil.AccessDenied):
+                pass
+    except (psutil.NoSuchProcess, psutil.AccessDenied):
+        pass
+
+    return total * 1000.0
 
 def createfunctions(spark,UDFs,UDAFs,UDTFs):
 
@@ -229,14 +247,13 @@ if __name__ == "__main__":
                 if args.print_results:
                     print_results = True
 
+                start_cpu = get_cpu_time_in_ms()
                 start = time.time()
-                startpt = time.process_time()
-                print("start execution")
                 executeScriptsFromFile(QUERY_PATH, spark,print_results)
                 end = time.time()
-                endpt = time.process_time()
+                end_cpu = get_cpu_time_in_ms()
                 print(f'Execution Time: {(end-start)*1000:.3f} ms\n')
-                print(f'Process Time: {(endpt-startpt)*1000:.3f} ms\n')
+                print(f'Process Time: {(end_cpu-start_cpu):.3f} ms\n')
 
             else:
                 print("Error creating UDFs")
