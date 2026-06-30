@@ -45,7 +45,7 @@ Note that the UDFBench schema contains denormalized features such as nested attr
 
 The ER-diagram of the UDFBench schema is as follows:
 
-<img src="https://github.com/johnfouf/udfbench/blob/main/figs/schema.png" alt="Dataset Schema" width="700px">
+<img src="figs/schema.png" alt="Dataset Schema" width="700px">
 
 ### Dataset ###
 
@@ -503,6 +503,15 @@ PyArrow(18.0.0), Scikit-learn (1.4.0), NLTK (3.8.1), Radon 6.0.1.
 
 
 **Note**: If these experiments run on different software versions the results may vary and certain features may not be supported.
+
+## Publications
+
+- <b>The UDFBench Benchmark for General-purpose UDF Queries</b>,<br>
+Yannis Foufoulas, Theoni Palaiologou, and Alkis Simitsis. Proceedings of the VLDB Endowment, Vol. 18, No. 9 ISSN 2150-8097. <br>
+_(VLDB 2025 Best Experiment Analysis & Benchmark Paper Award)_
+- <b>UDFBench: A Tool for Benchmarking UDF Queries on SQL Engines</b>, <br>
+Yannis Foufoulas, Theoni Palaiologou, and Alkis Simitsis. In Companion of the 2025 International Conference on Management of Data, pp. 91-94. 2025.
+
 
 ---
 ## Disclaimer
