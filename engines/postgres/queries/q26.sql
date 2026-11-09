@@ -1,0 +1,28 @@
+
+
+-- Q27: Deep-learning table UDF for author identity resolution.
+-- Change the final argument to 'cuda' for GPU execution.
+
+EXPLAIN (ANALYZE, BUFFERS)
+SELECT person_id, artifact_id, raw_affil, event_date
+FROM resolveauthors(
+    'SELECT * FROM (SELECT au.artifactid AS artifact_id,
+            blockkey(au.fullname, au.affiliation) AS bkey,
+            au.fullname AS raw_name,
+            au.affiliation AS raw_affil,
+            COALESCE(al.authorlist, ''[]'') AS coauthors,
+            frequentterms(
+                stem(filterstopwords(keywords(ab.abstract))), 10
+            ) AS topic_terms,
+            a.date AS event_date
+     FROM artifact_authors au
+     JOIN artifacts a ON a.id = au.artifactid
+     JOIN artifact_abstracts ab ON ab.artifactid = au.artifactid
+     LEFT JOIN artifact_authorlists al ON al.artifactid = au.artifactid
+     WHERE au.rank = 1 and extractyear(a.date) = 2010) WHERE jsoncount(coauthors)< 5',
+    'sentence-transformers/all-MiniLM-L6-v2',
+    'cuda'
+) resolved(person_id text, artifact_id text, raw_affil text, event_date text);
+
+
+
